@@ -5,12 +5,10 @@ import {Link} from "react-router-dom"
 const Header = () =>{
     return (
         <div className="header">
-            <Link className="link" to="/" style={{textDecoration:"none"}}>MovieDB</Link>
-            <Link className="link" to="/movies/mostClicked" style={{textDecoration:"none"}}>Najpopularniejsze Filmy</Link>
-            <Link className="link" to="/movies/topRated" style={{textDecoration:"none"}}>Najlepsze Filmy</Link>
-            <Link className="link" to="/movies/comingSoon" style={{textDecoration:"none"}}>Nadchodzące filmy</Link>
-            <Link className="link" to="profile" style={{textDecoration:"none"}}>Profil</Link>
-            <Link className="link" to="register" style={{textDecoration:"none"}}>Rejestracja</Link>
+            <Link className="link" to="movies" style={{textDecoration:"none", marginLeft:"1rem"}}>Lista Filmów</Link>
+            <Link className="link" to="persons" style={{textDecoration:"none"}}>Lista Aktorów</Link>
+            <Link className="link" to="profile" style={{textDecoration:"none"}}>Mój Profil</Link>
+            <Link className="link" to="register" style={{textDecoration:"none", marginRight:"1rem"}}>Rejestracja</Link>
         </div>
     )
 }
