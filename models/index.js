@@ -1,20 +1,25 @@
-'use strict';
-
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
 const process = require('process');
-
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.js')[env];
+const dbConfig = require('../config/config.js');
 const db = {};
 
-const sequelize = new Sequelize('SBD', 'postgres', 'postgres', {
-  dialect: 'postgres',
-  host: '34.76.19.152'
-}
-);
+
+const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
+  host: dbConfig.HOST,
+  dialect: dbConfig.dialect,
+  operatorsAliases: false,
+
+  pool: {
+    max: dbConfig.pool.max,
+    min: dbConfig.pool.min,
+    acquire: dbConfig.pool.acquire,
+    idle: dbConfig.pool.idle
+  }
+});
 
 sequelize
   .authenticate()
@@ -41,13 +46,17 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+module.exports = db;
 
 // const initModels = require("./init-models");
-// console.log(initModels);
+// console.log(db.Film);
+// var models = initModels(sequelize)
+// console.log(models)
 
-// //Dodaje nowy item do tabeli
+//Dodaje nowy item do tabeli
 // sequelize.sync().then(() => {
 //   db.Film.create({
 //       Film_Id: 1,
@@ -66,11 +75,11 @@ db.Sequelize = Sequelize;
 //   console.error('Unable to create table : ', error);
 // });
 
-// //Pobiera wszystkie Filmy i wypisuje w konsoli
+//Pobiera wszystkie Filmy i wypisuje w konsoli
 // var log = function(inst) {
 //   console.dir(inst.get())
 // }
-// var models = initModels(sequelize)
+
 // models.Film.findAll().then(function(posts) {
 //   posts.forEach(log)
 // })
