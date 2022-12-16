@@ -1,0 +1,21 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+li{
+    margin:25px;
+}
+
+body{
+    background: #060a1f;
+    height: 85%;
+    overflow-y: scroll;
+}
+ul{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap:wrap;
+    list-style-type: none;
+}
