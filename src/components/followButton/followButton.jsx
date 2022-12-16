@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './followButton'
+import './followButton.css'
 
 class FollowButton extends Component {
 	constructor(props){
