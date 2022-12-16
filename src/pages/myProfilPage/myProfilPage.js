@@ -7,7 +7,7 @@ const Profile = () => {
         <div className="container emp-profile" style={{marginTop:"200px", marginBottom:"200px"}}>
             <div className="row">
                 <div className="col-md-4">
-                    <div className="profile-img"><img class="img-fluid" src={profil}alt="profil"></img></div>
+                    <div className="profile-img"><img class="img-fluid" src={profil} alt="profil" style={{height:"500px"}}></img></div>
                 </div>
                 <div className="col-md-6">
                     <div className="profile-head">

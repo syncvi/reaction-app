@@ -18,7 +18,7 @@ function App() {
           <Route index element={<Home />}></Route>
           <Route path="movies" element={<MoviesPage />}/>
           <Route path="persons" element={<PersonsPage/>}/>
-          <Route path="register" element={<Register />}/>
+          <Route path="login/register" element={<Register />}/>
           <Route path="login" element={<Login />}/>
           <Route path="profile" element={<Profile />}/>
           <Route path="/*" element={<h2>Bad route</h2>}/>

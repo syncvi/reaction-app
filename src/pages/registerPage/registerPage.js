@@ -26,7 +26,7 @@ const Register = () => {
                 <div class="mb-3">
                     <button className="btn btn-success">Zarejestruj</button>
                     <label for="btnSuccess" class="form-label" style={{margin:"0px 0px 0px 970px"}}>Już masz konto?</label>
-                    <Link className="link" to="login" style={{textDecoration:"none"}}>Logowanie</Link>
+                    <Link className="link" to="/login" style={{textDecoration:"none"}}>Logowanie</Link>
                 </div>
 
             </div>
