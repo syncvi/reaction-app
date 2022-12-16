@@ -44,7 +44,7 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-const initModels = require("./init-models");
+// const initModels = require("./init-models");
 // console.log(initModels);
 
 // //Dodaje nowy item do tabeli
@@ -66,14 +66,14 @@ const initModels = require("./init-models");
 //   console.error('Unable to create table : ', error);
 // });
 
-//Pobiera wszystkie Filmy i wypisuje w konsoli
-var log = function(inst) {
-  console.dir(inst.get())
-}
-var models = initModels(sequelize)
-models.Film.findAll().then(function(posts) {
-  posts.forEach(log)
-})
+// //Pobiera wszystkie Filmy i wypisuje w konsoli
+// var log = function(inst) {
+//   console.dir(inst.get())
+// }
+// var models = initModels(sequelize)
+// models.Film.findAll().then(function(posts) {
+//   posts.forEach(log)
+// })
 
 
 
