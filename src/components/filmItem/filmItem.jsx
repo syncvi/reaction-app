@@ -3,6 +3,7 @@ import FollowButton from "../followButton/followButton";
 import "./FilmItem.css"
 import profil from "./images/profile.jpg"
 
+
 const FilmItem = (props) => {
 
     return(

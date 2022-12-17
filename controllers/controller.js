@@ -1,25 +1,30 @@
-var express = require('express');
+var express = require('express')
 var router = express.Router();
 const db = require("../models");
-const Kategoria = db.Kategoria;
+console.log("database")
+console.log(db.Film)
 
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
+    console.log(req.body)
     // Validate request
-    if (!req.body.title) {
-        res.status(400).send({
-            message: "Content can not be empty!"
-        });
-        return;
-    }
-
-    const Kategoria = {
-        Kategoria_Id: req.body.id,
-        Nazwa: req.body.name,
-    };
+    // if (!req.body.Tytuł) {
+    //     res.status(400).send({
+    //         message: "Content can not be empty!"
+    //     });
+    //     return;
+    // }
 
     // Save Tutorial in the database
-    Kategoria.create(tutorial)
+    db.Film.create({
+        Film_Id: req.body.Film_Id,
+        Tytuł: req.body.Tytuł,
+        Data_Wydania: req.body.Data_Wydania,
+        Długość: req.body.Długość,
+        Opis: req.body.Opis,
+        Zdjęcie: req.body.Zdjęcie,
+        Język: req.body.Język
+    })
         .then(data => {
             res.send(data);
         })
@@ -33,7 +38,7 @@ exports.create = (req, res) => {
 
 // Retrieve all Tutorials from the database.
 exports.findAll = (req, res) => {
-    Kategoria.findAll()
+    db.Film.findAll()
         .then(data => {
             res.send(data);
         })
@@ -49,7 +54,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
 
 };
-    
+
 // Update a Tutorial by the id in the request
 exports.update = (req, res) => {
 
