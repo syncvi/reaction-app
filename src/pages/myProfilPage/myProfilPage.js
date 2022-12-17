@@ -1,7 +1,6 @@
 import React from "react"
 import "./myProfilPage.css"
 import profil from "./images/profile.jpg"
-import { left } from "@popperjs/core"
 
 const dane={Login:"Uzytkownik_nick", StatusPremium:"Premium", Picture:"jakiesTam",ListFilm: ["Wiedźmin", "Avatar", "Avengers", "Chicago Fire"],
 ListActors:["Jacek Rozenek", "Dwayne Johnson", "Kevin Hart", "Johnny Depp"]}

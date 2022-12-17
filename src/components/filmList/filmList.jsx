@@ -49,12 +49,8 @@ class FilmList extends Component {
         .then(films => this.setState({films}, () => console.log('Films fetched' , films)))
     }
 
-    
-
 	render() {
 		return (
-                                                                                                      
-            
 			<ul class="ul1">
 				{this.state.films.map((data) => (
 					<li class="li1">
