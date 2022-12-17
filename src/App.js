@@ -11,6 +11,7 @@ import DetailsFilm from './pages/movieDetailsPage/movieDetailsPage'
 
 
 function App() {
+  
   return (
     <div className="App">
       <Router>
