@@ -7,6 +7,7 @@ import PersonsPage from './pages/personsPage/personsPage'
 import Register from './pages/registerPage/registerPage'
 import Login from './pages/loginPage/loginPage'
 import Profile from './pages/myProfilPage/myProfilPage'
+import DetailsFilm from './pages/movieDetailsPage/movieDetailsPage'
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="login/register" element={<Register />}/>
           <Route path="login" element={<Login />}/>
           <Route path="profile" element={<Profile />}/>
+          <Route path="/filmDetails" element={<DetailsFilm />}/>
           <Route path="/*" element={<h2>Bad route</h2>}/>
         </Routes>
       </Router>
