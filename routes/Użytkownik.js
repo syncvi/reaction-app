@@ -1,7 +1,8 @@
 const db = require("../models");
 const route = require('express').Router()
 var Użytkownik = db.Użytkownik
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 route.get('/', (req, res) => {
     Użytkownik.findAll()
@@ -60,64 +61,124 @@ route.delete('/', (req, res) => {
         });
 })
 
-route.post("/finduser", (request, response) => {
-    // check if email exists
-    Użytkownik.findAll({
-        where: {
-            Login: request.body.Login
-        }
-    })
+route.post("/user/register", (request, response) => {
+    // hash the password
+    psw = request.body.Hasło
+    bcrypt
+        .hash(psw, 10)
+        .then((hashedPassword) => {
+            // create a new user instance and collect the data
+            const user = new Użytkownik({
+                Login: request.body.Login,
+                EMail: request.body.EMail,
+                Hasło: hashedPassword,
+                StatusPremium: false,
+                TypKonta: "Użytkownik",
+                Zdjęcie: request.body.Zdjęcie
+            });
 
-        // if email exists
-        .then((user) => {
-            // compare the password entered and the hashed password found
-            bcrypt
-                .compare(request.body.password, user.password)
-
-                // if the passwords match
-                .then((passwordCheck) => {
-
-                    // check if password matches
-                    if (!passwordCheck) {
-                        return response.status(400).send({
-                            message: "Passwords does not match",
-                            error,
-                        });
-                    }
-
-                    //   create JWT token
-                    const token = jwt.sign(
-                        {
-                            userId: user._id,
-                            userEmail: user.email,
-                        },
-                        "RANDOM-TOKEN",
-                        { expiresIn: "24h" }
-                    );
-
-                    //   return success response
-                    response.status(200).send({
-                        message: "Login Successful",
-                        email: user.email,
-                        token,
+            // save the new user
+            user
+                .save()
+                // return success if the new user is added to the database successfully
+                .then((result) => {
+                    response.status(201).send({
+                        message: "User Created Successfully",
+                        result,
                     });
                 })
-                // catch error if password does not match
+                // catch erroe if the new user wasn't added successfully to the database
                 .catch((error) => {
-                    response.status(400).send({
-                        message: "Passwords does not match",
+                    response.status(500).send({
+                        message: "Error creating user",
                         error,
                     });
                 });
         })
-        // catch error if email does not exist
-        // .catch((e) => {
-        //     response.status(404).send({
-        //         message: "Email not found",
-        //         e,
-        //     });
-        // });
+        //   catch error if the password hash isn't successful
+        .catch((e) => {
+            response.status(500).send({
+                message: "Password was not hashed successfully",
+                e,
+            });
+        });
 });
+
+route.post("/user/login", (request, response) => {
+    // check if email exists
+    console.log(request.body.Login)
+    console.log(request.body.Hasło)
+    login = request.body.Login
+    var test = ''
+    pwd = request.body.Hasło
+    Użytkownik.findOne({
+        where: {
+            Login: login
+        }
+    })
+        // if email exists
+        .then((user) => {
+            var pwdcheck = bcrypt.compareSync(pwd, user.Hasło)
+            console.log(pwdcheck)
+            if (pwdcheck == true) {
+                console.log("Works")
+                const token = jwt.sign(
+                            {
+                                userLogin: user.Login,
+                                userEmail: user.EMail,
+                            },
+                            "RANDOM-TOKEN",
+                            { expiresIn: "24h" }
+                        )
+                response.status(200).send({
+                    message: "Login Successful",
+                    Login: user.Login,
+                    token
+                })
+            }
+
+            else {
+                response.status(401).send({
+                    message: "Passwords do not match",
+                });
+            }
+
+        })
+        // catch error if email does not exist
+        .catch((e) => {
+            response.status(404).send({
+                message: "Email not found",
+                e,
+            });
+        });
+
+    // if the passwords match
+    // if (pwdcheck) {
+    //     //   create JWT token
+    //     const token = jwt.sign(
+    //         {
+    //             userId: user.Login,
+    //             userEmail: user.EMail,
+    //         },
+    //         "RANDOM-TOKEN",
+    //         { expiresIn: "24h" }
+    //     );
+
+    //     //   return success response
+    //     response.status(200).send({
+    //         message: "Login Successful",
+    //         email: user.EMail,
+    //         token,
+    //     });
+    // }
+    // else {
+    //     return response.status(401).send({
+    //         message: "Passwords does not match",
+    //     });
+    // }
+})
+
+
 
 
 route.post('/', (req, res) => {
@@ -142,3 +203,4 @@ route.post('/', (req, res) => {
 })
 
 exports = module.exports = route
+
