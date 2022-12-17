@@ -9,9 +9,7 @@ import Login from './pages/loginPage/loginPage'
 import Profile from './pages/myProfilPage/myProfilPage'
 import DetailsFilm from './pages/movieDetailsPage/movieDetailsPage'
 
-
-function App() {
-  
+function App() {  
   return (
     <div className="App">
       <Router>

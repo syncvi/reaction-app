@@ -50,8 +50,6 @@ class FilmList extends Component {
         .then(films => this.setState({films}, () => console.log('Films fetched' , films)))
     }
 
-    
-
 	render() {
 		return (
                                                                                                       
