@@ -4,6 +4,7 @@ import "./FilmItem.css"
 import profil from "./images/profile.jpg"
 import {Link, useNavigate} from 'react-router-dom'
 
+
 const FilmItem = (props) => {
 
   let history = useNavigate();
