@@ -1,11 +1,9 @@
 import React,{useState, useEffect} from'react'
-import {Link, useNavigate} from 'react-router-dom'
 import FollowButton from '../../components/followButton/followButton';
 import CommentList  from '../../components/commentList/commentList'
 
 const DetailsFilm = () =>{
     const [props, setProps] = useState("");
-    let history = useNavigate();
     useEffect(() =>{
         var retrievedObject = localStorage.getItem('filmTitle');
         console.log(JSON.parse(retrievedObject))
@@ -24,7 +22,7 @@ const DetailsFilm = () =>{
             </div>
             <div className="row">
                 <div className="col" style={{maxWidth:"fit-content"}}>
-                    <img src={props.Picture} style={{height:"300px"}}></img>
+                    <img src={props.Picture} style={{height:"300px"}} alt=""></img>
                 </div>
                 <div className="col"><h3>Język: </h3><h2>{props.Language}</h2>
                     Data wydania : {props.ReleaseDate}

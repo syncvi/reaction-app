@@ -1,7 +1,6 @@
 import React from "react"
 import FollowButton from "../followButton/followButton";
 import "./FilmItem.css"
-import profil from "./images/profile.jpg"
 import {useNavigate} from 'react-router-dom'
 
 const FilmItem = (props) => {
