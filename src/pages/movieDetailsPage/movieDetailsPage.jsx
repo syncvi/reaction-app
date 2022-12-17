@@ -7,30 +7,32 @@ const DetailsFilm = () =>{
     const [props, setProps] = useState("");
     let history = useNavigate();
     useEffect(() =>{
-        setProps(localStorage.getItem('filmTitle'))
+        var retrievedObject = localStorage.getItem('filmTitle');
+        console.log(JSON.parse(retrievedObject))
+        setProps(JSON.parse(retrievedObject))
     },[])
-
+    
     return(
         <div class="main1">
         <div className="container">
             <div className="row" style={{paddingTop:"30px", paddingBottom:"30px"}}>
                 <div className="col" style={{fontSize:"50px"}}>
-                    Tytuł filmu
+                    {props.Title}
                 </div>
                 <div className="col" style={{paddingLeft:"100px", paddingTop:"30px"}}>Ocena: np. 3/5</div>
                 <div className="col"><FollowButton /></div>
             </div>
             <div className="row">
-                <div className="col">
-                    <img src="https://images7.alphacoders.com/617/617970.png" style={{height:"300px"}}></img>
+                <div className="col" style={{maxWidth:"fit-content"}}>
+                    <img src={props.Picture} style={{height:"300px"}}></img>
                 </div>
-                <div className="col"><h3>Tu damy język: </h3><h2>polski</h2>
-                    Data wydania : 23.12.2020
+                <div className="col"><h3>Język: </h3><h2>{props.Language}</h2>
+                    Data wydania : {props.ReleaseDate}
                 </div>
             </div>
             <div className="row">
                 <div style={{maxWidth:"1100px"}}>
-                Tu damy przedlugi opis filmuOOOOOO OOOO OOOOOOO OOOOOOO OOOOO OOOOO OOOOOOOOOO OOOOOOOOOO OOOO OOOOOOO OOOp ppppppp ppppp ppppp p ppppppp pppppp pppppp pppp piii iiii  iiiiiiii iiiiiiiii iiiii iiiiiiss ssss ssssssss sssss ssssssssss pisi kOpisikOpis ikOpisikOpisi OpisikOpi sikOpisikOpisik OpisikOpisikOpisi kOpisikO pisik is ikOpisik Opisik Opis ikOpisi  kO pisikOpisikO  pisikO pisikOpi sikOpis ikOpi sikOpis ikOpis ikOpis ikOpis ikOpis ikOpisi kOp isik
+                    {props.Description}
                 </div>
             </div>
             <div className="row" style={{paddingTop:"50px"}}>

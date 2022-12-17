@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey: true
     },
-    'E-Mail': {
+    EMail: {
       type: DataTypes.TEXT,
       allowNull: false
     },

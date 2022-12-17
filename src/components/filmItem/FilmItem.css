@@ -10,14 +10,14 @@
 .card{
     background: linear-gradient(180deg, #f08, #3b43de);
     width: 350px;
-    height: 440px;
+    height: 550px;
     border-radius: 10px;
     color: rgb(110, 226, 43);
 }
 .card .image > img{
     width: 100%;
     border-radius:10px;
-    height: 250px;
+    height: 350px;
 }
 .card .info{
     display: flex;

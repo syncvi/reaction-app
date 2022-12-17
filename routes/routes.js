@@ -1,3 +1,5 @@
+const { resolveMotionValue } = require('framer-motion');
+
 var route = require('express').Router();
 var log = function(inst) {
   console.dir(inst.get())
@@ -6,6 +8,14 @@ var log = function(inst) {
 route.use('/Film', require('./Film'))
 route.use('/Kategoria', require('./Kategoria'))
 route.use('/Osoba', require('./Osoba'))
+route.use('/Uzytkownik', require('./Użytkownik'))
+route.use('/Film_Aktor', require('./Film_Aktor'))
+route.use('/Film_Firma', require('./Film_Firma'))
+route.use('/Film_Kategoria', require('./Film_Kategoria'))
+route.use('/Film_Pracownik', require('./Film_Pracownik'))
+route.use('/Opinia', require('./Opinia'))
+route.use('/Obserwuje', require('./Obserwuje'))
+route.use('/Firma_Produkcyjna', require('./Firma_Produkcyjna'))
 
 exports = module.exports = {
   route
