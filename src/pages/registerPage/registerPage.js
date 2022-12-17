@@ -1,7 +1,6 @@
 import React, {useState} from "react"
-import { Link, redirect } from "react-router-dom"
+import { Link} from "react-router-dom"
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
 import './registerPage.css'
 
 

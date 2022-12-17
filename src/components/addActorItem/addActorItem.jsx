@@ -25,7 +25,7 @@ class AddActorItem extends Component{
                 </div>
                 <div class="mb-3">
                     <label for="title" class="form-label" style={{fontSize:"22px", fontWeight:"bold", color:"#3b43de"}}>Kraj Pochodzenia</label>
-                    <input type="number" class="form-control" name="Kraj_Pochodzenia"/>
+                    <input type="text" class="form-control" name="Kraj_Pochodzenia"/>
                 </div>
                 <div class="mb-3">
                     <label for="title" class="form-label" style={{fontSize:"22px", fontWeight:"bold", color:"#3b43de"}}>Zdjęcie</label>

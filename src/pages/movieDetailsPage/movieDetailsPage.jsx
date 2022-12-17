@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from'react'
 import FollowButton from '../../components/followButton/followButton';
 import CommentList  from '../../components/commentList/commentList'
+import AddComment from '../../components/addComment/addComment';
 
 const DetailsFilm = () =>{
     const [props, setProps] = useState("");
@@ -55,6 +56,9 @@ const DetailsFilm = () =>{
                 <div className="col" style={{paddingTop:"50px"}}>
                     <CommentList />
                 </div>
+            </div>
+            <div className="row" style={{paddingTop:"50px"}}>
+                <AddComment />
             </div>
         </div>
         </div>
