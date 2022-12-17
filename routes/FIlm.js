@@ -35,7 +35,6 @@ route.get('/:id', (req, res) => {
         });
 })
 
-
 route.delete('/', (req, res) => {
     const id = req.body.Film_Id;
 
