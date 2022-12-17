@@ -6,7 +6,7 @@ import MoviesPage from './pages/moviesPage/moviesPage'
 import PersonsPage from './pages/personsPage/personsPage'
 import Register from './pages/registerPage/registerPage'
 import Login from './pages/loginPage/loginPage'
-import Profile from './pages/myProfilPage/myProfilPage'
+import Profile from './pages/myProfilPage/myProfilPage.jsx'
 import DetailsFilm from './pages/movieDetailsPage/movieDetailsPage'
 import React, { Component }  from 'react';
 
