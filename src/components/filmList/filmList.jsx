@@ -5,6 +5,11 @@ import './FilmList.css'
 
 const FilmListI=[{Title:"Wiedźmin",ReleaseDate:"2001",Language:"Język polski",Length:"120 min",Description:"Opis w luj dlugi ze az sie nie chce czytać",Picture:"Zdjecie dupy Zoltana"},
 {Title:"Wiedźmin",ReleaseDate:"2001",Language:"Język polski",Length:"120 min",Description:"Opis w luj dlugi ze az sie nie chce czytać",Picture:"Zdjecie dupy Zoltana"},
+{Title:"Wiedźmin",ReleaseDate:"2001",Language:"Język polski",Length:"120 min",Description:"Opis w luj dlugi ze az sie nie chce czytać",Picture:"Zdjecie dupy Zoltana"},
+{Title:"Wiedźmin",ReleaseDate:"2001",Language:"Język polski",Length:"120 min",Description:"Opis w luj dlugi ze az sie nie chce czytać",Picture:"Zdjecie dupy Zoltana"},
+{Title:"Wiedźmin",ReleaseDate:"2001",Language:"Język polski",Length:"120 min",Description:"Opis w luj dlugi ze az sie nie chce czytać",Picture:"Zdjecie dupy Zoltana"},
+{Title:"Wiedźmin",ReleaseDate:"2001",Language:"Język polski",Length:"120 min",Description:"Opis w luj dlugi ze az sie nie chce czytać",Picture:"Zdjecie dupy Zoltana"},
+{Title:"Wiedźmin",ReleaseDate:"2001",Language:"Język polski",Length:"120 min",Description:"Opis w luj dlugi ze az sie nie chce czytać",Picture:"Zdjecie dupy Zoltana"},
 {Title:"Wiedźmin",ReleaseDate:"2001",Language:"Język polski",Length:"120 min",Description:"Opis w luj dlugi ze az sie nie chce czytać",Picture:"Zdjecie dupy Zoltana"}]
 
 const FilmList = () => {

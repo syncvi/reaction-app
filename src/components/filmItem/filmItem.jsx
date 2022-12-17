@@ -2,8 +2,16 @@ import React from "react"
 import FollowButton from "../followButton/followButton";
 import "./FilmItem.css"
 import profil from "./images/profile.jpg"
+import {Link, useNavigate} from 'react-router-dom'
 
 const FilmItem = (props) => {
+
+  let history = useNavigate();
+  const handleDetails = (props) =>{
+    localStorage.setItem('filmTitle', props.Title);
+    history("/filmDetails")
+  }
+
 
     return(
         <div class="card">
@@ -11,7 +19,7 @@ const FilmItem = (props) => {
             <img src={profil} alt="profil" />
           </div>
           <div class="title">
-              <h3>{props.Title}</h3>
+              <h3 style={{paddingLeft:"10px"}}>{props.Title}</h3>
             </div>
           <div class="info">
             <div class="columnleft">
@@ -27,8 +35,8 @@ const FilmItem = (props) => {
           </div>
           <div class="btn">
               <FollowButton />
-              <button class="btn">Szczegóły</button>
-            </div>
+              <button class="btn" onClick={() => handleDetails(props)}>Szczegóły</button>
+          </div>
         </div>
           );
     };

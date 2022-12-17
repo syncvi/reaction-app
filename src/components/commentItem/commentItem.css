@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
 
 *{
@@ -7,32 +6,28 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-.card{
+.card1{
     background: linear-gradient(180deg, #f08, #3b43de);
-    width: 350px;
-    height: 440px;
+    width: 500px;
+    height: fit-content;
     border-radius: 10px;
     color: rgb(110, 226, 43);
+    padding-bottom: 20px;
 }
-.card .image > img{
-    width: 100%;
-    border-radius:10px;
-    height: 250px;
-}
-.card .info{
+.card1 .info1{
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     padding: 0px 30px 15px 30px;
 }
 
-.card .info p{
+.card1 .info1 p1{
     font-size: 18px;
     font-weight: 600;
     color: white;
 }
 
-.card .info .title h3 {
+.card1 .info1 .title1 h3 {
     display: block;
     position: relative;
     align-items: center;
@@ -44,34 +39,19 @@
     width: 30vh; 
     text-align:center;
 }
-.card .btn{
-    display: flex;
-    justify-content: space-around;
-    border: none;
-}
-.card .btn button{
-    padding: 20px 40px;
-    border: none;
-    border-radius: 10px;
-    background: #060a1f;
-    color: white;
-    font-size: 15px;
-    font-weight: 700;
-    cursor:pointer;
-}
 
-.card .columnleft {
+.card1 .columnleft1 {
     height: 5vh;
   float: left;
   width: 60%;
 }
 
-.card .columnright {
+.card1 .columnright1 {
     height: 5vh;
   float: left;
   width: 40%;
 }
-.card .Length {
+.card1 .Length1 {
     text-align: right;
     color: black;
   }

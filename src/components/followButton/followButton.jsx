@@ -23,7 +23,7 @@ class FollowButton extends Component {
 } 
 render(){  
       return( 
-            <div><input class="btn" type="button" value="Follow" onClick={() => this.follow()}/>                                                                                           
+            <div class="dejw"><input class="btn" type="button" value="Follow" onClick={() => this.follow()}/>                                                                                           
             </div> ); 
 }
 }
