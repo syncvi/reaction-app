@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import AddActorButton from "../addActorButton/addActorButton";
+import AddActorButton from "../addActorButton/addActorButton";
 import ActorItem from "../actorItem/actorItem";
 import "./actorList.css";
 
@@ -36,6 +36,7 @@ class ActorList extends Component {
                     </li>
                 ))}
             </ul>
+            <AddActorButton />
             </>
 		);
 	}

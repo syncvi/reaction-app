@@ -2,7 +2,7 @@ import React from "react"
 import FollowButton from "../followButton/followButton";
 import "./actorItem.css"
 
-const FilmItem = (props) => {
+const ActorItem = (props) => {
     return(
         <div class="card">
           <div class="image">
@@ -30,4 +30,4 @@ const FilmItem = (props) => {
         </div>
           );
     };
-    export default FilmItem
+    export default ActorItem
