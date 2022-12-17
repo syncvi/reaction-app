@@ -33,7 +33,7 @@ const FilmItem = (props) => {
             </div>
           </div>
           <div class="btn">
-              <FollowButton />
+              <FollowButton props={props}/>
               <button class="btn" onClick={() => handleDetails(props)}>Szczegóły</button>
           </div>
         </div>

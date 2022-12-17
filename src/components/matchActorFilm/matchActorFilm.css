@@ -1,0 +1,12 @@
+.btn1{
+    margin-left: 350px;
+
+}
+.cont1{
+    min-width: 800px;
+    margin-left: 100px;
+    margin-bottom: 100px;
+    background: linear-gradient(180deg, #f08, #d0e);
+    border-radius: 10px;
+    color:BLUE;
+}
