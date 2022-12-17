@@ -8,6 +8,7 @@ import Register from './pages/registerPage/registerPage'
 import Login from './pages/loginPage/loginPage'
 import Profile from './pages/myProfilPage/myProfilPage'
 import DetailsFilm from './pages/movieDetailsPage/movieDetailsPage'
+import React, { Component }  from 'react';
 
 function App() {  
   return (
