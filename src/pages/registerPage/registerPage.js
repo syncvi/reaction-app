@@ -1,7 +1,9 @@
 import React from "react"
 import {Link} from "react-router-dom"
+import './registerPage.css'
 const Register = () => {
     return (
+        <div class="cont">
         <div className="container">
             <div className="row">
                 <div className="col-md-7">
@@ -30,6 +32,7 @@ const Register = () => {
                 </div>
 
             </div>
+        </div>
         </div>
     )
 }

@@ -8,11 +8,11 @@
     font-family: 'Poppins', sans-serif;
 }
 .card{
-    background: rgb(6, 180, 211);
+    background-color: #969696;
     width: 350px;
     height: 440px;
     border-radius: 10px;
-    color: #060a1f;
+    color: blueviolet;
 }
 .card .image > img{
     width: 100%;
@@ -29,9 +29,8 @@
 .card .info p{
     font-size: 18px;
     font-weight: 600;
-    color: gold;
+    color: blue;
 }
-
 
 .card .info .title h3 {
     display: block;
@@ -40,7 +39,7 @@
     justify-content: space-between;
     padding: 5px;
     font-size: 30px;
-    font-weight: 700;
+    font-weight: 1000;
     height: 8vh;
     width: 30vh; 
     text-align:center
@@ -61,13 +60,13 @@
     cursor:pointer;
 }
 
-.columnleft {
+.card .columnleft {
     height: 5vh;
   float: left;
   width: 60%;
 }
 
-.columnright {
+.card .columnright {
     height: 5vh;
   float: left;
   width: 40%;

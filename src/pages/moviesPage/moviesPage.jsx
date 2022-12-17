@@ -6,7 +6,7 @@ import FilmList from "../../components/filmList/filmList";
 
 const MoviesPage = () => {
     return (
-        <div>
+        <div class="main1">
            <FilmList />
         </div>
     )

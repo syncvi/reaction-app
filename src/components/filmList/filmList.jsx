@@ -9,9 +9,9 @@ const FilmListI=[{Title:"Wiedźmin",ReleaseDate:"2001",Language:"Język polski",
 
 const FilmList = () => {
     return (
-        <ul>
+        <ul class="ul1">
             {FilmListI.map((data) => (
-                <li>
+                <li class="li1">
                     <FilmItem Title={data.Title} ReleaseDate={data.ReleaseDate} Language={data.Language} Length={data.Length} Description={data.Description} Picture={data.Picture}/>
                 </li>
       ))}

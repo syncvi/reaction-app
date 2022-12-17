@@ -1,0 +1,11 @@
+.cont{
+    background: linear-gradient(180deg, #f08, #d0e);
+    border-radius: 10px;
+    display: flex;
+    margin: 200px;
+    color:BLUE;
+}
+.h11{
+    font-weight: 800;
+    padding-top: 30px;
+}
