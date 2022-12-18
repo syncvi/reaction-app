@@ -47,6 +47,20 @@ db.Sequelize = Sequelize;
 module.exports = db;
 
 
+// const initModels = require("./init-models");
+// var models = initModels(sequelize)
+
+// models.Film.findOne({where: {Film_Id: 1}, include: {model: models.Osoba, as: 'Osoba_Id_Osobas'}})
+// .then (res => {
+//   var test = JSON.stringify(res,null,2)
+//   console.log(test);
+//   // while(res.Osoba_Id_Osobas[i].Imię !== null){
+    
+//   // }
+// console.log(res.Osoba_Id_Osobas.length)
+//   console.log(res.Osoba_Id_Osobas[0].Imię)
+//   console.log(res.Osoba_Id_Osobas[0].Nazwisko)
+// })
 
 
 // //Dodaje nowy item do tabeli
