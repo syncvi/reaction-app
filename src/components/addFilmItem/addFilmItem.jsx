@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
+import axios from "axios"
 
 export default function AddFilmItem (){
-    const [Tytuł, setPassword] = useState("");
-    const [Login, setLogin] = useState(false);
+    const [Tytuł, setTitle] = useState("");
+    const [DataWydania, setDate] = useState(false);
 
     const handleSubmit = (e) => {
         // prevent the form from refreshing the whole page
@@ -11,27 +12,18 @@ export default function AddFilmItem (){
         // set configurations
         const configuration = {
             method: "post",
-            url: "http://localhost:8080/routes/Uzytkownik/user/login",
+            url: "http://localhost:8080/routes/Film",
             data: {
-                Login,
-                Hasło
+                Tytuł,
+                DataWydania
             },
         };
         axios(configuration)
-            .then((result) => {
-                // set the cookie
-                cookies.set("TOKEN", result.data.token, {
-                    path: "/",
-                });
-                // redirect user to the auth page
-                window.location.href = "/profile";
-
-                setLogin(true);
-                console.log(configuration);
-            })
+            .then(() => {
+              })
             .catch((error) => {
                 error = new Error();
-                console.log(configuration);
+                
             });
     }
         return(
