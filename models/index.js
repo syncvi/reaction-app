@@ -48,9 +48,6 @@ module.exports = db;
 
 
 
-// var models = initModels(sequelize)
-// const initModels = require("./init-models");
-// console.log(initModels);
 
 // //Dodaje nowy item do tabeli
 // sequelize.sync().then(() => {

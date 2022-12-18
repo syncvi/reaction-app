@@ -1,82 +1,104 @@
 const db = require("../models");
-const route = require('express').Router()
-var Film = db.Film
+const route = require("express").Router();
+var Film = db.Film;
+var Osoba = db.Osoba;
+const Sequelize = require('sequelize');
+const initModels = require("../models/init-models");
 
-route.get('/', (req, res) => {
+const sequelize = new Sequelize('SBD', 'postgres', 'postgres', {
+    dialect: 'postgres',
+    host: '34.76.19.152'
+  }
+  );
+  var models = initModels(sequelize)
+
+route.get("/", (req, res) => {
     Film.findAll()
-        .then(data => {
+        .then((data) => {
             res.send(data);
         })
-        .catch(err => {
+        .catch((err) => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while retrieving tutorials."
+                    err.message ||
+                    "Some error occurred while retrieving tutorials.",
             });
         });
-})
+});
 
-route.get('/:id', (req, res) => {
+route.get("/:id", (req, res) => {
     const id = req.params.id;
 
     Film.findByPk(id)
-        .then(data => {
+        .then((data) => {
             if (data) {
                 res.send(data);
             } else {
                 res.status(404).send({
-                    message: `Cannot find Tutorial with id=${id}.`
+                    message: `Cannot find Tutorial with id=${id}.`,
                 });
             }
         })
-        .catch(err => {
+        .catch((err) => {
             res.status(500).send({
-                message: "Error retrieving Tutorial with id=" + id
+                message: "Error retrieving Tutorial with id=" + id,
             });
         });
-})
+});
 
-route.delete('/', (req, res) => {
+route.delete("/", (req, res) => {
     const id = req.body.Film_Id;
 
     Film.destroy({
-        where: { Film_Id: id }
+        where: { Film_Id: id },
     })
-        .then(num => {
+        .then((num) => {
             if (num == 1) {
                 res.send({
-                    message: "Movie was deleted successfully!"
+                    message: "Movie was deleted successfully!",
                 });
             } else {
                 res.send({
-                    message: `Cannot delete Movie with id=${id}. Maybe Movie was not found!`
+                    message: `Cannot delete Movie with id=${id}. Maybe Movie was not found!`,
                 });
             }
         })
-        .catch(err => {
+        .catch((err) => {
             res.status(500).send({
-                message: "Could not delete Movie with id=" + id
+                message: "Could not delete Movie with id=" + id,
             });
         });
-})
+});
 
-route.post('/', (req, res) => {
-    console.log(req.body)
+route.post("/", (req, res) => {
+    console.log(req.body);
     Film.create({
         Tytuł: req.body.Tytuł,
         Data_Wydania: req.body.Data_Wydania,
         Długość: req.body.Długość,
         Opis: req.body.Opis,
         Zdjęcie: req.body.Zdjęcie,
-        Język: req.body.Język
+        Język: req.body.Język,
     })
-        .then(data => {
+        .then((data) => {
             res.send(data);
         })
-        .catch(err => {
+        .catch((err) => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the Tutorial."
+                    err.message ||
+                    "Some error occurred while creating the Tutorial.",
             });
         });
+});
+
+route.get("/findActors/:id", (req, res) => {
+    const id = req.params.id;
+
+    models.Film.findOne({ where: { Film_Id: id }, include: { model: models.Osoba, as: 'Osoba_Id_Osobas' } })
+        .then((data) => {
+            res.send(JSON.stringify(data, null, 2))
+        })
 })
-exports = module.exports = route
+
+exports = module.exports = route;
