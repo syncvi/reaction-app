@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     Rola: {
-      type: DataTypes.ARRAY(DataTypes.CHAR),
+      type: DataTypes.TEXT,
       allowNull: true
     }
   }, {

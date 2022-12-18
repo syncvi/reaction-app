@@ -1,16 +1,44 @@
 import React, { Component } from 'react'
 
-class AddFilmItem extends Component{
-    render(){
+export default function AddFilmItem (){
+    const [Tytuł, setPassword] = useState("");
+    const [Login, setLogin] = useState(false);
+
+    const handleSubmit = (e) => {
+        // prevent the form from refreshing the whole page
+        e.preventDefault();
+
+        // set configurations
+        const configuration = {
+            method: "post",
+            url: "http://localhost:8080/routes/Uzytkownik/user/login",
+            data: {
+                Login,
+                Hasło
+            },
+        };
+        axios(configuration)
+            .then((result) => {
+                // set the cookie
+                cookies.set("TOKEN", result.data.token, {
+                    path: "/",
+                });
+                // redirect user to the auth page
+                window.location.href = "/profile";
+
+                setLogin(true);
+                console.log(configuration);
+            })
+            .catch((error) => {
+                error = new Error();
+                console.log(configuration);
+            });
+    }
         return(
             <div class="cont">
                 <div className="container">
                     <h2>Nowy Film</h2>
             <from>
-                <div class="mb-3">
-                    <label for="title" class="form-label" style={{fontSize:"22px", fontWeight:"bold", color:"#3b43de"}}>ID</label>
-                    <input type="number" class="form-control" name="Id"/>
-                </div>
                 <div class="mb-3">
                     <label for="title" class="form-label" style={{fontSize:"22px", fontWeight:"bold", color:"#3b43de"}}>Tytuł</label>
                     <input type="text" class="form-control" name="Tytul"/>
@@ -40,7 +68,6 @@ class AddFilmItem extends Component{
             </div>
         )
         
-    }
+    
 
 }
-export default AddFilmItem;

@@ -62,7 +62,6 @@ route.delete('/', (req, res) => {
 route.post('/', (req, res) => {
     console.log(req.body)
     Film.create({
-        Film_Id: req.body.Film_Id,
         Tytuł: req.body.Tytuł,
         Data_Wydania: req.body.Data_Wydania,
         Długość: req.body.Długość,
