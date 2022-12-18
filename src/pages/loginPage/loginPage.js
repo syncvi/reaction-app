@@ -1,4 +1,4 @@
-import React, {useState } from "react"
+import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios"
 import './loginPage.css'
@@ -8,8 +8,24 @@ const cookies = new Cookies();
 
 export default function Login() {
     const [Hasło, setPassword] = useState("");
-    const [Login, setLogin] = useState(false);
+    const [Login, setLogin] = useState("");
+    const [login, setLogged] = useState(false);
 
+    const getUserInfo = () => {
+        axios
+            .get(`http://localhost:8080/routes/Uzytkownik/${Login}`,)
+            .then(function (response) {
+                window.localStorage.removeItem('userInfo')
+                const obj = {
+                    Login: response.data.Login ,
+                    StatusPremium: response.data.StatusPremium,
+                    TypKonta: response.data.TypKonta,
+                    Zdjęcie: response.data.Zdjęcie
+                }
+                console.log(obj)
+                localStorage.setItem('userInfo', JSON.stringify(obj));
+            });
+    }
     const handleSubmit = (e) => {
         // prevent the form from refreshing the whole page
         e.preventDefault();
@@ -30,10 +46,12 @@ export default function Login() {
                     path: "/",
                 });
                 // redirect user to the auth page
-                window.location.href = "/profile";
+                
+                getUserInfo()
+                setLogged(true);
+                // console.log(configuration);
+                setTimeout(() => { window.location.href = "/profile" }, 1500);
 
-                setLogin(true);
-                console.log(configuration);
             })
             .catch((error) => {
                 error = new Error();
@@ -63,7 +81,7 @@ export default function Login() {
                         <Link className="link" to="register" style={{ textDecoration: "none" }}>Rejestracja</Link>
                     </div>
                 </form>
-                {Login ? (
+                {login ? (
                     <p className="text-success">You Are Logged in Successfully</p>
                 ) : (
                     <p className="text-danger">You Are Not Logged in</p>

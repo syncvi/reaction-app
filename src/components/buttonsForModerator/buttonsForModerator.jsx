@@ -1,12 +1,10 @@
 import React ,{useState} from 'react'
-import MatchActorFilm from "../../components/matchActorFilm/matchActorFilm"
-import MatchCategoryFilm from "../../components/matchCategoryFilm/matchCategoryFilm"
-import DeleteFilm from "../../components/deleteFilm/deleteFilm"
+
 import DeleteActor from "../../components/deleteActor/deleteActor"
 import DeleteUser from "../../components/deleteUser/deleteUser"
 import ChangePassword from "../../components/changePassword/changePassword"
 import AddCompany from "../../components/addCompany/addCompany"
-import ChangeFilm from "../../components/changeFilm/changeFilm"
+
 import ChangeActor from "../../components/changeActor/changeActor"
 
 function ButtonsForModerator() {
@@ -84,27 +82,9 @@ function ButtonsForModerator() {
             )
         }
         )}
-        <button style={{minWidth:"100%", marginTop:"20px", background:"#060a1f", color:"white", borderRadius:"10px", fontSize:"20px"}} onClick={() => handleAdd1()}>Dołącz film z aktorem</button>
-        {val1.map(()=>{
-            return(
-                <MatchActorFilm onChange={e=>handleChange1(e)}></MatchActorFilm>
-            )
-        }
-        )}
-        <button style={{minWidth:"100%", marginTop:"20px", background:"#060a1f", color:"white", borderRadius:"10px", fontSize:"20px"}} onClick={() => handleAdd2()}>Dołącz film z kategorią</button>
-        {val2.map(()=>{
-            return(
-                <MatchCategoryFilm onChange={e=>handleChange2(e)}></MatchCategoryFilm>
-            )
-        }
-        )}
-        <button style={{minWidth:"100%", marginTop:"20px", background:"#060a1f", color:"white", borderRadius:"10px", fontSize:"20px"}} onClick={() => handleAdd3()}>Usuń film</button>
-        {val3.map(()=>{
-            return(
-                <DeleteFilm onChange={e=>handleChange3(e)}></DeleteFilm>
-            )
-        }
-        )}
+        
+        
+        
         <button style={{minWidth:"100%", marginTop:"20px", background:"#060a1f", color:"white", borderRadius:"10px", fontSize:"20px"}} onClick={() => handleAdd4()}>Usuń aktora</button>
         {val4.map(()=>{
             return(
@@ -126,13 +106,7 @@ function ButtonsForModerator() {
             )
         }
         )}
-        <button style={{minWidth:"100%", marginTop:"20px", background:"#060a1f", color:"white", borderRadius:"10px", fontSize:"20px"}} onClick={() => handleAdd7()}>Zmień tytuł filmu</button>
-        {val7.map(()=>{
-            return(
-                <ChangeFilm onChange={e=>handleChange7(e)}/>
-            )
-        }
-        )}
+        
         <button style={{minWidth:"100%", marginTop:"20px", background:"#060a1f", color:"white", borderRadius:"10px", fontSize:"20px"}} onClick={() => handleAdd8()}>Zmień dane aktora</button>
         {val8.map(()=>{
             return(

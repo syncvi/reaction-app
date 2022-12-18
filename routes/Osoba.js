@@ -18,13 +18,11 @@ route.get('/', (req, res) => {
 route.post('/', (req, res) => {
     console.log(req.body)
     Osoba.create({
-        Film_Id: req.body.Film_Id,
-        Tytuł: req.body.Tytuł,
-        Data_Wydania: req.body.Data_Wydania,
-        Długość: req.body.Długość,
-        Opis: req.body.Opis,
+        Imię: req.body.Imię,
+        Nazwisko: req.body.Nazwisko,
+        Data_Urodzenia: req.body.Data_Urodzenia,
+        Kraj_Pochodzenia: req.body.Kraj_Pochodzenia,
         Zdjęcie: req.body.Zdjęcie,
-        Język: req.body.Język
     })
         .then(data => {
             res.send(data);

@@ -109,7 +109,6 @@ route.post("/user/login", (request, response) => {
     console.log(request.body.Login)
     console.log(request.body.Hasło)
     login = request.body.Login
-    var test = ''
     pwd = request.body.Hasło
     Użytkownik.findOne({
         where: {
@@ -178,7 +177,29 @@ route.post("/user/login", (request, response) => {
     // }
 })
 
-
+route.post("/update", (req, res) => {
+    const Login = req.body.Login;
+    Użytkownik.update({
+        StatusPremium : req.body.StatusPremium,
+    },
+    {where:{Login : Login}})
+    .then(num => {
+        if (num == 1) {
+          res.send({
+            message: "Tutorial was updated successfully."
+          });
+        } else {
+          res.send({
+            message: `Cannot update Tutorial with id=${Login}. Maybe Tutorial was not found or req.body is empty!`
+          });
+        }
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Error updating Tutorial with id=" + Login
+        });
+      });
+})
 
 
 route.post('/', (req, res) => {

@@ -3,9 +3,9 @@
 
 }
 .cont11{
-    width:800px;
-    margin-left: 100px;
-    max-height: 300px;
+    min-width: 100%;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
     background: linear-gradient(180deg, #f08, #d0e);
     border-radius: 10px;
     color:BLUE;
