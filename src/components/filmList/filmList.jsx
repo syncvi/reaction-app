@@ -12,15 +12,17 @@ class FilmList extends Component {
 
     componentDidMount() {
         fetch('http://localhost:8080/routes/Film')
-        .then(res => res.json())
-        .then(films => this.setState({films}, () => console.log('Films fetched' , films)))
+            .then(res => res.json())
+            .then(films => this.setState({ films }, () => console.log('Films fetched', films)))
+            .catch((error) => {
+                error = new Error();
+
+            });
     }
 
-	render() {
-		return (
-                                                                                                      
-            
-			<><ul class="ul1">
+    render() {
+        return (
+            <><ul class="ul1">
                 {this.state.films.map((data) => (
                     <li class="li1">
                         <FilmItem
@@ -34,8 +36,8 @@ class FilmList extends Component {
                     </li>
                 ))}
             </ul>
-            <AddFilmButton /></>
-		);
-	}
+                <AddFilmButton /></>
+        );
+    }
 }
 export default FilmList;

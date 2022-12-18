@@ -1,13 +1,11 @@
-
 import React, { useState } from 'react';
 import AddFilmItem from '../addFilmItem/addFilmItem';
 
 function AddFilmButton() {
     var user = JSON.parse(localStorage.getItem("userInfo"))
     var check = false
-    console.log(user.TypKonta) //)
 
-    if (user !== null && (user.TypKonta == 'Moderator' || user.TypKonta == 'Administrator')) check = true
+    if (user !== null && (user.TypKonta === 'Moderator' || user.TypKonta === 'Administrator')) check = true
     else check = false
 
     const [isShown, setIsShown] = useState(false);
@@ -17,7 +15,7 @@ function AddFilmButton() {
 
     return (
         <div>
-            {check == true &&
+            {check === true &&
                 <div>
                     <button style={{ minWidth: "100%", marginTop: "200px", background: "#060a1f", color: "white", borderRadius: "10px", fontSize: "20px" }} onClick={() => handleAdd()}>Dodaj film</button>
                     {isShown &&

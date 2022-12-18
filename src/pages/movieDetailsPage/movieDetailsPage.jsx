@@ -17,13 +17,15 @@ const DetailsFilm = () => {
     const [isShown5, setIsShown5] = useState(false);
     var userInfo = JSON.parse(localStorage.getItem('userInfo'));
     var check = false
-    if (userInfo !== null && (userInfo.TypKonta == 'Moderator' || userInfo.TypKonta == 'Administrator')) check = true
+    if (userInfo !== null && (userInfo.TypKonta === 'Moderator' || userInfo.TypKonta === 'Administrator')) check = true
     else check = false
     useEffect(() => {
         var retrievedObject = localStorage.getItem('filmTitle');
         console.log(JSON.parse(retrievedObject))
         setProps(JSON.parse(retrievedObject))
     }, [])
+
+    
     const handleAdd1 = () => {
         setIsShown1(current => !current);
     }
@@ -64,7 +66,7 @@ const DetailsFilm = () => {
                     </div>
                 </div>
 
-                {check == true &&
+                {check === true &&
                     <div>
                         <button style={{ minWidth: "100%", marginTop: "20px", background: "#060a1f", color: "white", borderRadius: "10px", fontSize: "20px" }} onClick={() => handleAdd1()}>Dodaj Aktora</button>
                         {isShown1 &&
