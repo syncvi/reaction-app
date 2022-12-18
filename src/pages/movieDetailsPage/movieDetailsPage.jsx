@@ -7,6 +7,7 @@ import MatchCategoryFilm from "../../components/matchCategoryFilm/matchCategoryF
 import AddCompany from "../../components/addCompany/addCompany"
 import DeleteFilm from "../../components/deleteFilm/deleteFilm"
 import ChangeFilm from "../../components/changeFilm/changeFilm"
+import ActorListDetails from '../../components/actorListDetails/actorListDetails';
 
 const DetailsFilm = () => {
     const [props, setProps] = useState("");
@@ -71,21 +72,7 @@ const DetailsFilm = () => {
                                     <div className="col" style={{ paddingTop: "1vh" }}><FollowButton />
                                     </div>
                                     <div className="col">
-                                        Tu damy liste aktorow:
-                                        <ul>
-                                            <li>
-                                                Jeden aktor
-                                            </li>
-                                            <li>
-                                                Drugi aktor
-                                            </li>
-                                            <li>
-                                                Trzeci aktor
-                                            </li>
-                                            <li>
-                                                Czwarty aktor
-                                            </li>
-                                        </ul>
+                                        <ActorListDetails/>
                                     </div>
                                 </div>
                             </div>          

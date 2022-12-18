@@ -1,34 +1,40 @@
+import axios from "axios";
 import React, { Component } from "react";
 
-class ActorListDetails extends Component{
-
+class ActorListDetails extends Component {
     constructor() {
-        super();
-        this.state = {
-            osoby: []
-        }
+        super()
+        this.nameList = []
+        this.nameList.push({Imię: "Jakub", Nazwisko: "Ogar"})
+
     }
+    componentWillMount() {
+        const test = JSON.parse(localStorage.getItem('filmTitle'));
+        const configuration = {
+            method: "get",
+            url: `http://localhost:8080/routes/Film/findActors/${test.Id}`,
 
-    componentDidMount() {
-        fetch('http://localhost:8080/routes/Osoba/id')
-            .then(res => res.json())
-            .then(osoby => this.setState({ osoby }, () => console.log('Osoby fetched', osoby)))
-            .catch((error) => {
-                error = new Error();
+        };
+        axios(configuration)
+            .then((res) => {
+                // set the cookie
+                for (var i = 0; i < res.data.Osoba_Id_Osobas.length; i++) {
+                    this.nameList.push({ Imię: res.data.Osoba_Id_Osobas[i]["Imię"], Nazwisko: res.data.Osoba_Id_Osobas[i]["Nazwisko"] })
+                }
 
-            });
+                // redirect user to the auth page
+            })
     }
-
     render() {
-        return (
-            <><ul class="ul">
-                {this.state.osoby.map((data) => (
-                    <li class="li">
-                        {data.Imię}<span></span>{data.Nazwisko}
-                    </li>
+        console.log(this.nameList)
+       return (
+            <ul>
+                {this.nameList.map(({Imię, Nazwisko}) => (
+                    <p key={Imię}>{Imię} {Nazwisko}</p>
                 ))}
-            </ul></>
+            </ul>
         );
     }
+
 }
 export default ActorListDetails;
