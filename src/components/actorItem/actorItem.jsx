@@ -1,4 +1,4 @@
-import React from "react"
+import React,{useState} from "react"
 import ChangeActor from "../changeActor/changeActor";
 import DeleteActor from "../deleteActor/deleteActor";
 import FollowButton from "../followButton/followButton";
