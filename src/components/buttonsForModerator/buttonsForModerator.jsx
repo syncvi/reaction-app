@@ -5,6 +5,9 @@ import DeleteFilm from "../../components/deleteFilm/deleteFilm"
 import DeleteActor from "../../components/deleteActor/deleteActor"
 import DeleteUser from "../../components/deleteUser/deleteUser"
 import ChangePassword from "../../components/changePassword/changePassword"
+import AddCompany from "../../components/addCompany/addCompany"
+import ChangeFilm from "../../components/changeFilm/changeFilm"
+import ChangeActor from "../../components/changeActor/changeActor"
 
 function ButtonsForModerator() {
 
@@ -38,6 +41,21 @@ function ButtonsForModerator() {
         const abc=[val]
         setVal5(abc)
     }
+    const [val6, setVal6] = useState([]);
+    const handleAdd6=()=>{
+        const abc=[val]
+        setVal6(abc)
+    }
+    const [val7, setVal7] = useState([]);
+    const handleAdd7=()=>{
+        const abc=[val]
+        setVal7(abc)
+    }
+    const [val8, setVal8] = useState([]);
+    const handleAdd8=()=>{
+        const abc=[val]
+        setVal8(abc)
+    }
 
     const handleChange = () => {
     }
@@ -51,6 +69,12 @@ function ButtonsForModerator() {
     }
     const handleChange5 = () => {
     }
+    const handleChange6 = () => {
+    }
+    const handleChange7 = () => {
+    }
+    const handleChange8 = () => {
+    }
     return (
         <>
         <button style={{minWidth:"100%", marginTop:"200px", background:"#060a1f", color:"white", borderRadius:"10px", fontSize:"20px"}} onClick={() => handleAdd()}>Zmień hasło</button>
@@ -60,14 +84,14 @@ function ButtonsForModerator() {
             )
         }
         )}
-        <button style={{minWidth:"100%", marginTop:"20px", background:"#060a1f", color:"white", borderRadius:"10px", fontSize:"20px"}} onClick={() => handleAdd1()}>Połącz film z aktorem</button>
+        <button style={{minWidth:"100%", marginTop:"20px", background:"#060a1f", color:"white", borderRadius:"10px", fontSize:"20px"}} onClick={() => handleAdd1()}>Dołącz film z aktorem</button>
         {val1.map(()=>{
             return(
                 <MatchActorFilm onChange={e=>handleChange1(e)}></MatchActorFilm>
             )
         }
         )}
-        <button style={{minWidth:"100%", marginTop:"20px", background:"#060a1f", color:"white", borderRadius:"10px", fontSize:"20px"}} onClick={() => handleAdd2()}>Połącz film z kategorią</button>
+        <button style={{minWidth:"100%", marginTop:"20px", background:"#060a1f", color:"white", borderRadius:"10px", fontSize:"20px"}} onClick={() => handleAdd2()}>Dołącz film z kategorią</button>
         {val2.map(()=>{
             return(
                 <MatchCategoryFilm onChange={e=>handleChange2(e)}></MatchCategoryFilm>
@@ -95,7 +119,27 @@ function ButtonsForModerator() {
             )
         }
         )}
-        
+        <button style={{minWidth:"100%", marginTop:"20px", background:"#060a1f", color:"white", borderRadius:"10px", fontSize:"20px"}} onClick={() => handleAdd6()}>Dodaj Firmę produkcyjną</button>
+        {val6.map(()=>{
+            return(
+                <AddCompany onChange={e=>handleChange6(e)}/>
+            )
+        }
+        )}
+        <button style={{minWidth:"100%", marginTop:"20px", background:"#060a1f", color:"white", borderRadius:"10px", fontSize:"20px"}} onClick={() => handleAdd7()}>Zmień tytuł filmu</button>
+        {val7.map(()=>{
+            return(
+                <ChangeFilm onChange={e=>handleChange7(e)}/>
+            )
+        }
+        )}
+        <button style={{minWidth:"100%", marginTop:"20px", background:"#060a1f", color:"white", borderRadius:"10px", fontSize:"20px"}} onClick={() => handleAdd8()}>Zmień dane aktora</button>
+        {val8.map(()=>{
+            return(
+                <ChangeActor onChange={e=>handleChange8(e)}/>
+            )
+        }
+        )}
         {/* <div class="rowek">
             <MatchActorFilm onChange={e=>handleChange()}/>
                 <div class="col">
