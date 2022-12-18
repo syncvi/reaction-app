@@ -7,6 +7,7 @@ import DeleteFilm from "../../components/deleteFilm/deleteFilm"
 import DeleteActor from "../../components/deleteActor/deleteActor"
 import DeleteUser from "../../components/deleteUser/deleteUser"
 import ChangePassword from "../../components/changePassword/changePassword"
+import ButtonsForModerator from "../../components/buttonsForModerator/buttonsForModerator"
 
 const dane={Login:"Uzytkownik_nick", StatusPremium:"Premium", Picture:"jakiesTam",ListFilm: ["Wiedźmin", "Avatar", "Avengers", "Chicago Fire"],
 ListActors:["Jacek Rozenek", "Dwayne Johnson", "Kevin Hart", "Johnny Depp"]}
@@ -87,7 +88,7 @@ class Profile extends Component {
             </div>
         </div>
         </div>
-        <div style={{marginLeft:"470px", marginBottom:"30px"}}>
+        {/* <div style={{marginLeft:"470px", marginBottom:"30px"}}>
             <ChangePassword />
         </div>
         <div class="rowek">
@@ -106,6 +107,9 @@ class Profile extends Component {
             <div class="col">
                 <DeleteUser/>
             </div>
+        </div> */}
+        <div>
+            <ButtonsForModerator />
         </div>
         </div>
         );
