@@ -5,6 +5,7 @@ import DeleteUser from "../../components/deleteUser/deleteUser"
 import ChangePassword from "../../components/changePassword/changePassword"
 import AddCompany from "../../components/addCompany/addCompany"
 import EditUser from "../../components/editUser/editUser"
+import AddCategory from "../../components/addCategory/addCategory"
 
 // const dane = {
 //     Login: "Uzytkownik_nick", StatusPremium: "Premium", Picture: "jakiesTam", ListFilm: ["Wiedźmin", "Avatar", "Avengers", "Chicago Fire"],
@@ -123,7 +124,7 @@ export default function Profile() {
                             <button style={{ minWidth: "100%", marginTop: "20px", background: "#060a1f", color: "white", borderRadius: "10px", fontSize: "20px" }} onClick={() => handleAddCat()}>Dodaj Kategorię</button>
                             {isShownAddCat &&
                                 <div>
-                                    Dodaj Kategorię here
+                                    <AddCategory></AddCategory>
                                 </div>
                             }
                             <button style={{ minWidth: "100%", marginTop: "20px", background: "#060a1f", color: "white", borderRadius: "10px", fontSize: "20px" }} onClick={() => handleEditUser()}>Edytuj Użytkownika</button>

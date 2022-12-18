@@ -3,7 +3,7 @@ import './deleteUser.css'
 class DeleteUser extends Component{
     render(){
         return(
-            <div class="cont12">
+            <div class="cont1">
                 <div className="container">
                     <h2>Podaj usuwanego użytkownika</h2>
             <from>

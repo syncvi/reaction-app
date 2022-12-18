@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 class ChangePassword extends Component{
     render(){
         return(
-            <div class="cont12">
+            <div class="cont1">
                 <div className="container">
                     <h2>Podaj nowe hasło</h2>
             <from>

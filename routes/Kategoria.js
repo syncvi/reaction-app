@@ -15,10 +15,27 @@ route.get('/', (req, res) => {
       });
 })  
 
+route.post('/findId', (req, res) => {
+    Kategoria.findOne({
+        where: {
+            Nazwa: req.body.Nazwa
+        }
+    })
+      .then(data => {
+          res.send(data);
+      })
+      .catch(err => {
+          res.status(500).send({
+              message:
+                  err.message || "Some error occurred while retrieving tutorials."
+          });
+      });
+}) 
+
 route.post('/', (req, res) => {
     console.log(req.body)
     Kategoria.create({
-        
+        Nazwa: req.body.Nazwa,
     })
         .then(data => {
             res.send(data);
