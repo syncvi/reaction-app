@@ -4,9 +4,8 @@ import AddActorItem from '../addActorItem/addActorItem';
 function AddActorButton(){
     var user = JSON.parse(localStorage.getItem("userInfo"))
     var check = false
-    console.log(user.TypKonta) //)
 
-    if (user !== null && (user.TypKonta == 'Moderator' || user.TypKonta == 'Administrator')) check = true
+    if (user !== null && (user.TypKonta === 'Moderator' || user.TypKonta === 'Administrator')) check = true
     else check = false
 
     const [isShown, setIsShown] = useState(false);
@@ -16,9 +15,9 @@ function AddActorButton(){
 
     return(
         <div>
-         {check == true &&
+         {check === true &&
                 <div>
-                    <button style={{ minWidth: "100%", marginTop: "200px", background: "#060a1f", color: "white", borderRadius: "10px", fontSize: "20px" }} onClick={() => handleAdd()}>Dodaj film</button>
+                    <button style={{ minWidth: "100%", marginTop: "200px", background: "#060a1f", color: "white", borderRadius: "10px", fontSize: "20px" }} onClick={() => handleAdd()}>Dodaj Osobę</button>
                     {isShown &&
                         <div><AddActorItem></AddActorItem>
                         </div>
