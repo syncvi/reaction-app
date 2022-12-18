@@ -10,7 +10,7 @@ class AddComment extends Component{
     //na slepo robie css bo nie widze detailsPage -> nie mam bazy xd
     render(){
         return(
-            <div class="cont">
+            <div class="cont" style={{marginLeft:"0px"}}>
                 <div className="container">
                     <h2>Dodaj komentarz</h2>
             <from>

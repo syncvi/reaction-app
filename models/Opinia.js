@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     Ocena: {
-      type: DataTypes.ARRAY(DataTypes.INTEGER),
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     Komentarz: {

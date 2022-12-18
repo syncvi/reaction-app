@@ -15,6 +15,24 @@ route.get('/', (req, res) => {
       });
 })  
 
+route.post('/findId', (req, res) => {
+    Osoba.findOne({
+        where: {
+            Imię: req.body.Imię,
+            Nazwisko: req.body.Nazwisko
+        }
+    })
+      .then(data => {
+          res.send(data);
+      })
+      .catch(err => {
+          res.status(500).send({
+              message:
+                  err.message || "Some error occurred while retrieving tutorials."
+          });
+      });
+}) 
+
 route.post('/', (req, res) => {
     console.log(req.body)
     Osoba.create({
