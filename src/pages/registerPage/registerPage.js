@@ -3,7 +3,6 @@ import { Link} from "react-router-dom"
 import axios from "axios"
 import './registerPage.css'
 
-
 export default function Register() {
     // initial state
     const [EMail, setEmail] = useState("");
