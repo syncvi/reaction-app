@@ -2,7 +2,6 @@ import React, {useState } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios"
 import './loginPage.css'
-import axios from "axios"
 import Cookies from "universal-cookie";
 const cookies = new Cookies();
 
