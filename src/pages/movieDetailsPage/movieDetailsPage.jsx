@@ -17,11 +17,12 @@ const DetailsFilm = () => {
     const [isShown5, setIsShown5] = useState(false);
     var userInfo = JSON.parse(localStorage.getItem('userInfo'));
     var check = false
-    if (userInfo !== null && (userInfo.TypKonta === 'Moderator' || userInfo.TypKonta === 'Administrator')) check = true
+    var checkLogged = false
+    if (userInfo !== null) checkLogged = true
+    if (checkLogged && (userInfo.TypKonta === 'Moderator' || userInfo.TypKonta === 'Administrator')) check = true
     else check = false
     useEffect(() => {
         var retrievedObject = localStorage.getItem('filmTitle');
-        console.log(JSON.parse(retrievedObject))
         setProps(JSON.parse(retrievedObject))
     }, [])
 
@@ -49,26 +50,53 @@ const DetailsFilm = () => {
                     <div className="col" style={{ fontSize: "50px" }}>
                         {props.Title}
                     </div>
-                    <div className="col" style={{ paddingLeft: "100px", paddingTop: "30px" }}>Ocena: np. 3/5</div>
-                    <div className="col"><FollowButton /></div>
                 </div>
                 <div className="row">
-                    <div className="col" style={{ maxWidth: "fit-content" }}>
-                        <img src={props.Picture} style={{ height: "300px" }} alt=""></img>
-                    </div>
-                    <div className="col"><h3>Język: </h3><h2>{props.Language}</h2>
-                        Data wydania : {props.ReleaseDate}
+                    <div className="row">
+                        <div className="col" style={{ maxWidth: "fit-content" }}>
+                            <img src={props.Picture} style={{ height: "300px" }} alt=""></img>
+                        </div>
+                        <div className="col">
+                            <div className="row">
+                                <div className="col" style={{ minWidth: "75vh" }}>
+                                    <h3>Język: {props.Language}</h3>
+                                    Data wydania : {props.ReleaseDate}
+                                    <div className="row" style={{ paddingTop: "1vh" }}>
+                                <div style={{ maxWidth: "1100px" }}>
+                                    Opis: {props.Description}
+                                </div>
+                            </div>
+                                </div>
+                                <div className="col" style={{ paddingLeft: "3vh" }}>Ocena: np. 3/5
+                                    <div className="col" style={{ paddingTop: "1vh" }}><FollowButton />
+                                    </div>
+                                    <div className="col">
+                                        Tu damy liste aktorow:
+                                        <ul>
+                                            <li>
+                                                Jeden aktor
+                                            </li>
+                                            <li>
+                                                Drugi aktor
+                                            </li>
+                                            <li>
+                                                Trzeci aktor
+                                            </li>
+                                            <li>
+                                                Czwarty aktor
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>          
+                        </div>
                     </div>
                 </div>
                 <div className="row">
-                    <div style={{ maxWidth: "1100px" }}>
-                        {props.Description}
-                    </div>
                 </div>
-
                 {check === true &&
                     <div>
-                        <button style={{ minWidth: "100%", marginTop: "20px", background: "#060a1f", color: "white", borderRadius: "10px", fontSize: "20px" }} onClick={() => handleAdd1()}>Dodaj Aktora</button>
+                        <button style={{ minWidth: "100%", marginTop: "20px", background: "#060a1f", color: "white", borderRadius: "10px", fontSize: "20px" }} onClick={() => handleAdd1()}>Dodaj Osobę</button>
                         {isShown1 &&
                             <div>
                                 <MatchActorFilm ></MatchActorFilm>
@@ -99,38 +127,19 @@ const DetailsFilm = () => {
                                 <DeleteFilm ></DeleteFilm>
                             </div>
                         }
-                        
-                        
-
-
                     </div>
                 }
                 <div className="row" style={{ paddingTop: "50px" }}>
-                    <div className="col">
-                        Tu damy liste aktorow:
-                        <ul>
-                            <li>
-                                Jeden aktor
-                            </li>
-                            <li>
-                                Drugi aktor
-                            </li>
-                            <li>
-                                Trzeci aktor
-                            </li>
-                            <li>
-                                Czwarty aktor
-                            </li>
-                        </ul>
 
-                    </div>
                     <div className="col" style={{ paddingTop: "50px" }}>
                         <CommentList />
                     </div>
                 </div>
+                {checkLogged &&
                 <div className="row" style={{ paddingTop: "50px" }}>
-                    <AddComment />
-                </div>
+                <AddComment />
+            </div>}
+                
             </div>
         </div>
     )
