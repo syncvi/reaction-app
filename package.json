@@ -40,6 +40,9 @@
       "react-app/jest"
     ]
   },
+  "browser": {
+    "async_hooks": false
+  },
   "browserslist": {
     "production": [
       ">0.2%",
