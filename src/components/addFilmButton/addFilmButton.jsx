@@ -17,7 +17,7 @@ function AddFilmButton() {
     return (
         <div>
             {check === true &&
-                <div style={{marginLeft:"45%"}}>
+                <div style={{marginLeft:"92vh"}}>
                     <button className = "addButton" onClick={() => handleAdd()}>Dodaj film</button>
                     {isShown &&
                         <div><AddFilmItem></AddFilmItem>
