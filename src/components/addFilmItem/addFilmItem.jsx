@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from "axios"
+import styles from './addFilmItem.module.css'
 
 export default function AddFilmItem() {
     const [Tytuł, setTitle] = useState("");
@@ -38,40 +39,40 @@ export default function AddFilmItem() {
             });
     }
     return (
-        <div class="cont">
-            <div className="container">
+        <div className = {styles.cont}>
+            <div className={styles.form_container}>
                 <h2>Nowy Film</h2>
                 <form onSubmit={(e) => handleSubmit(e)}>
                     <div class="mb-3">
-                        <label for="title" class="form-label" style={{ fontSize: "22px", fontWeight: "bold", color: "#3b43de" }}>Tytuł</label>
-                        <input type="text" class="form-control" name="Tytuł" onChange={(e) => setTitle(e.target.value)} />
+                        <label for="title" class="label">Tytuł</label>
+                        <input type="textarea" class="form-control" name="Tytuł" onChange={(e) => setTitle(e.target.value)} />
                     </div>
                     <div class="mb-3">
-                        <label for="title" class="form-label" style={{ fontSize: "22px", fontWeight: "bold", color: "#3b43de" }}>Data Wydania</label>
+                        <label for="title" class="form-label">Data Wydania</label>
                         <input type="RRRR-MM-DD" class="form-control" name="DataWydania" onChange={(e) => setReleaseDate(e.target.value)} />
                     </div>
                     <div class="mb-3">
-                        <label for="title" class="form-label" style={{ fontSize: "22px", fontWeight: "bold", color: "#3b43de" }}>Język</label>
+                        <label for="title" class="form-label">Język</label>
                         <input type="text" class="form-control" name="Język" onChange={(e) => setLanguage(e.target.value)} />
                     </div>
                     <div class="mb-3">
-                        <label for="title" class="form-label" style={{ fontSize: "22px", fontWeight: "bold", color: "#3b43de" }}>Długość</label>
+                        <label for="title" class="form-label">Długość</label>
                         <input type="number" class="form-control" name="Długość" onChange={(e) => setLength(e.target.value)} />
                     </div>
                     <div class="mb-3">
-                        <label for="title" class="form-label" style={{ fontSize: "22px", fontWeight: "bold", color: "#3b43de" }}>Opis</label>
+                        <label for="title" class="form-label">Opis</label>
                         <input type="text" class="form-control" name="Opis" onChange={(e) => setDescription(e.target.value)} />
                     </div>
                     <div class="mb-3">
-                        <label for="title" class="form-label" style={{ fontSize: "22px", fontWeight: "bold", color: "#3b43de" }}>Zdjęcie</label>
+                        <label for="title" class="form-label">Zdjęcie</label>
                         <input type="text" class="form-control" name="Zdjecie" onChange={(e) => setImage(e.target.value)} />
                     </div>
-                    <div class="mb-3">
-                        <button className="btn btn-success" type="submit" onClick={(e) => handleSubmit(e)}>Dodaj Film</button>
+                    <div>
+                        <button type="submit" onClick={(e) => handleSubmit(e)}>Dodaj Film</button>
                     </div>
                 </form>
                 {added ? (
-                    <p className="text-success">Movie added succesfully</p>
+                    <p className={styles.text_success}>Pomyślnie dodano film</p>
                 ) : (
                     <></>
                 )}

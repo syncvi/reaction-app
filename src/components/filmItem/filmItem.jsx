@@ -1,6 +1,6 @@
 import React from "react";
 import FollowButton from "../followButton/followButton";
-import "./FilmItem.css";
+import styles from "./FilmItem.module.css";
 import { useNavigate } from "react-router-dom";
 
 const FilmItem = (props) => {
@@ -28,9 +28,9 @@ const FilmItem = (props) => {
 					</div>
 				</div>
 			</div>
-      <div class="btn">
-        <button class="btn" onClick={() => handleDetails(props)}>Szczegóły</button>
-      </div>
+
+        <button  onClick={() => handleDetails(props)}>Szczegóły</button>
+
 		</div>
 	);
 };
