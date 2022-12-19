@@ -1,6 +1,7 @@
 import React, { Component, useState } from 'react'
 import './matchCategoryFilm.css'
 import axios from 'axios'
+
 function MatchCategoryFilm() {
     const [Nazwa, setName] = useState("");
     var filmInfo = JSON.parse(localStorage.getItem('filmTitle'));

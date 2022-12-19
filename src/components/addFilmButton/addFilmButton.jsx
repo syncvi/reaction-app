@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import AddFilmItem from '../addFilmItem/addFilmItem';
+import "./addFilmButton.css"
 
 function AddFilmButton() {
     var user = JSON.parse(localStorage.getItem("userInfo"))
@@ -16,8 +17,8 @@ function AddFilmButton() {
     return (
         <div>
             {check === true &&
-                <div>
-                    <button style={{ minWidth: "100%", marginTop: "200px", background: "#060a1f", color: "white", borderRadius: "10px", fontSize: "20px" }} onClick={() => handleAdd()}>Dodaj film</button>
+                <div style={{marginLeft:"45%"}}>
+                    <button className = "addButton" onClick={() => handleAdd()}>Dodaj film</button>
                     {isShown &&
                         <div><AddFilmItem></AddFilmItem>
                         </div>

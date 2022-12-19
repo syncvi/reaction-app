@@ -24,7 +24,7 @@ class ActorList extends Component {
 		return (
                                                                                                       
             
-			<><ul class="ul1">
+			<><ul>
                 {this.state.films.map((data) => (
                     <li class="li1">
                         <ActorItem

@@ -7,7 +7,7 @@ import '../../components/filmList/FilmList.css'
 
 const MoviesPage = () => {
     return (
-        <div class="main1">
+        <div class="MoviesPage">
            <FilmList />
         </div>
     )

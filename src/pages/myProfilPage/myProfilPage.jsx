@@ -4,7 +4,6 @@ import axios from "axios"
 import DeleteUser from "../../components/deleteUser/deleteUser"
 import ChangePassword from "../../components/changePassword/changePassword"
 import AddCompany from "../../components/addCompany/addCompany"
-import EditUser from "../../components/editUser/editUser"
 import AddCategory from "../../components/addCategory/addCategory"
 
 // const dane = {
@@ -58,7 +57,7 @@ export default function Profile() {
     return (
         <div>
             <div class="main">
-                <div className="container emp-profile" style={{ marginTop: "100px", marginBottom: "50px", paddingBottom: "20px", paddingTop: "20px" }}>
+                <div className="container emp-profile" style={{ marginTop: "5vh", marginBottom: "2vh"}}>
                     <div className="row">
                         <div className="col-md-4">
                             <div className="profile-img"><img class="img-fluid" src={dane.Zdjęcie} alt="profil" style={{ height: "400px", width: "400px", paddingLeft: "10px" }}></img></div>

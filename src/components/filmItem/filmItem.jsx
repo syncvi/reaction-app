@@ -1,41 +1,37 @@
-import React from "react"
+import React from "react";
 import FollowButton from "../followButton/followButton";
-import "./FilmItem.css"
-import { useNavigate } from 'react-router-dom'
+import "./FilmItem.css";
+import { useNavigate } from "react-router-dom";
 
 const FilmItem = (props) => {
+	let history = useNavigate();
+	const handleDetails = (props) => {
+		localStorage.setItem("filmTitle", JSON.stringify(props));
+		history("/filmDetails");
+	};
 
-  let history = useNavigate();
-  const handleDetails = (props) => {
-    localStorage.setItem('filmTitle', JSON.stringify(props));
-    history("/filmDetails")
-  }
-
-
-  return (
-    <div class="card">
-      <div class="image">
-        <img src={props.Picture} alt="profil" />
-      </div>
-      <div class="title" style={{ minHeight: "10vh", maxWidth: "20rem" }}>
-        <h3 style={{ paddingLeft: "10px" }}>{props.Title}</h3>
-      </div>
-      <div class="info">
-        <div class="columnleft">
-          <p>Data Wydania: {props.ReleaseDate}</p>
-        </div>
-        <div class="columnright">
-          <div class="Length">
-            <h6>
-              Długość filmu: {props.Length}
-            </h6>
-          </div>
-        </div>
-      </div>
+	return (
+		<div class="card">
+			<div class="img">
+				<img src={props.Picture} />
+			</div>
+			<div class="title">
+				<h3>{props.Title}</h3>
+			</div>
+			<div class="info">
+				<div class="columnleft">
+					<p>Data Wydania: {props.ReleaseDate}</p>
+				</div>
+				<div class="columnright">
+					<div class="Length">
+						<p>Długość filmu: {props.Length}</p>
+					</div>
+				</div>
+			</div>
       <div class="btn">
         <button class="btn" onClick={() => handleDetails(props)}>Szczegóły</button>
       </div>
-    </div>
-  );
+		</div>
+	);
 };
-export default FilmItem
+export default FilmItem;
