@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AddActorItem from '../addActorItem/addActorItem';
 
-function AddActorButton(){
+function AddActorButton() {
     var user = JSON.parse(localStorage.getItem("userInfo"))
     var check = false
 
@@ -13,11 +13,11 @@ function AddActorButton(){
         setIsShown(current => !current);
     }
 
-    return(
+    return (
         <div>
-         {check === true &&
-                <div>
-                    <button style={{ minWidth: "100%", marginTop: "200px", background: "#060a1f", color: "white", borderRadius: "10px", fontSize: "20px" }} onClick={() => handleAdd()}>Dodaj Osobę</button>
+            {check === true &&
+                <div style={{ marginLeft: "92vh" }}>
+                    <button className="addButton" onClick={() => handleAdd()}>Dodaj Osobe</button>
                     {isShown &&
                         <div><AddActorItem></AddActorItem>
                         </div>
