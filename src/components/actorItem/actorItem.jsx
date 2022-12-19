@@ -44,15 +44,18 @@ const ActorItem = (props) => {
         <FollowButton />
       </div>
       {check == true &&
-        <div>
-          <button style={{ minWidth: "100%", marginTop: "20px", background: "#060a1f", color: "white", borderRadius: "10px", fontSize: "20px" }} onClick={() => handleAdd1()}>Edytuj Aktora</button>
+        <div class="btn" style={{ margin: "10px" }}  >
+          <button class="btn" onClick={() => handleAdd1()}>Edytuj Aktora</button>
           {isShown1 &&
             <div>
               <ChangeActor />
             </div>
           }
-
-          <button style={{ minWidth: "100%", marginTop: "20px", background: "#060a1f", color: "white", borderRadius: "10px", fontSize: "20px" }} onClick={() => handleAdd2()}>Usuń Aktora</button>
+        </div>
+      }
+      {check == true &&
+        <div class="btn" style={{ margin: "10px" }} >
+          <button class="btn" onClick={() => handleAdd2()}>Usuń Aktora</button>
           {isShown2 &&
             <div>
               <DeleteActor />
@@ -60,6 +63,7 @@ const ActorItem = (props) => {
           }
         </div>
       }
+
     </div>
   );
 };

@@ -27,7 +27,7 @@ const DetailsFilm = () => {
         setProps(JSON.parse(retrievedObject))
     }, [])
 
-    
+
     const handleAdd1 = () => {
         setIsShown1(current => !current);
     }
@@ -63,19 +63,19 @@ const DetailsFilm = () => {
                                     <h3>Język: {props.Language}</h3>
                                     Data wydania : {props.ReleaseDate}
                                     <div className="row" style={{ paddingTop: "1vh" }}>
-                                <div style={{ maxWidth: "1100px" }}>
-                                    Opis: {props.Description}
-                                </div>
-                            </div>
+                                        <div style={{ maxWidth: "1100px" }}>
+                                            Opis: {props.Description}
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className="col" style={{ paddingLeft: "3vh" }}>Ocena: np. 3/5
                                     <div className="col" style={{ paddingTop: "1vh" }}><FollowButton />
                                     </div>
                                     <div className="col">
-                                        <ActorListDetails/>
+                                        <ActorListDetails />
                                     </div>
                                 </div>
-                            </div>          
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -83,32 +83,32 @@ const DetailsFilm = () => {
                 </div>
                 {check === true &&
                     <div>
-                        <button style={{ minWidth: "100%", marginTop: "20px", background: "#060a1f", color: "white", borderRadius: "10px", fontSize: "20px" }} onClick={() => handleAdd1()}>Dodaj Osobę</button>
+                        <button className="addButton" style={{ marginTop: "-30vh", marginLeft: "60vh" }} onClick={() => handleAdd1()}>Dodaj Aktora</button>
                         {isShown1 &&
                             <div>
                                 <MatchActorFilm ></MatchActorFilm>
                             </div>
                         }
 
-                        <button style={{ minWidth: "100%", marginTop: "20px", background: "#060a1f", color: "white", borderRadius: "10px", fontSize: "20px" }} onClick={() => handleAdd2()}>Dodaj Kategorię</button>
+                        <button className="addButton" style={{ marginTop: "-25vh", marginLeft: "60vh" }} onClick={() => handleAdd2()}>Dodaj Kategorię</button>
                         {isShown2 &&
                             <div>
                                 <MatchCategoryFilm></MatchCategoryFilm>
                             </div>
                         }
-                        <button style={{ minWidth: "100%", marginTop: "20px", background: "#060a1f", color: "white", borderRadius: "10px", fontSize: "20px" }} onClick={() => handleAdd5()}>Dodaj wytwórnię</button>
+                        <button className="addButton" style={{ marginTop: "-20vh", marginLeft: "60vh" }} onClick={() => handleAdd5()}>Dodaj wytwórnię</button>
                         {isShown5 &&
                             <div>
                                 <AddCompany />
                             </div>
                         }
-                        <button style={{ minWidth: "100%", marginTop: "20px", background: "#060a1f", color: "white", borderRadius: "10px", fontSize: "20px" }} onClick={() => handleAdd4()}>Edytuj Film</button>
+                        <button className="addButton" style={{ marginTop: "-15vh", marginLeft: "60vh" }} onClick={() => handleAdd4()}>Edytuj Film</button>
                         {isShown4 &&
                             <div>
                                 <ChangeFilm />
                             </div>
                         }
-                        <button style={{ minWidth: "100%", marginTop: "20px", background: "#060a1f", color: "white", borderRadius: "10px", fontSize: "20px" }} onClick={() => handleAdd3()}>Usuń film</button>
+                        <button className="addButton" style={{ marginTop: "-10vh", marginLeft: "60vh" }} onClick={() => handleAdd3()}>Usuń film</button>
                         {isShown3 &&
                             <div>
                                 <DeleteFilm ></DeleteFilm>
@@ -123,10 +123,10 @@ const DetailsFilm = () => {
                     </div>
                 </div>
                 {checkLogged &&
-                <div className="row" style={{ paddingTop: "50px" }}>
-                <AddComment />
-            </div>}
-                
+                    <div className="row" style={{ paddingTop: "50px" }}>
+                        <AddComment />
+                    </div>}
+
             </div>
         </div>
     )

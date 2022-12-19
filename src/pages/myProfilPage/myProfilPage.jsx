@@ -57,7 +57,7 @@ export default function Profile() {
     return (
         <div>
             <div class="main">
-                <div className="container emp-profile" style={{ marginTop: "5vh", marginBottom: "2vh"}}>
+                <div className="container emp-profile" style={{ marginTop: "5vh", marginBottom: "2vh" }}>
                     <div className="row">
                         <div className="col-md-4">
                             <div className="profile-img"><img class="img-fluid" src={dane.Zdjęcie} alt="profil" style={{ height: "400px", width: "400px", paddingLeft: "10px" }}></img></div>
@@ -99,34 +99,34 @@ export default function Profile() {
                             </div>
                         </div>
                     </div>
-                    <button style={{ minWidth: "100%", marginTop: "20px", background: "#060a1f", color: "white", borderRadius: "10px", fontSize: "20px" }} onClick={() => handleChangePwd()}>Zmień hasło</button>
+                    <button className="addButton" style={{ margin: "auto" }} onClick={() => handleChangePwd()}>Zmień hasło</button>
                     {isShownChangePwd &&
                         <div>
                             <ChangePassword></ChangePassword>
                         </div>
 
                     }
-                    <button style={{ minWidth: "100%", marginTop: "20px", background: "#060a1f", color: "white", borderRadius: "10px", fontSize: "20px" }} onClick={() => handleDelete()}>Usuń Użytkownika</button>
+                    <button className="addButton" style={{ margin: "inherit" }} onClick={() => handleDelete()}>Usuń Użytkownika</button>
                     {isShownDelete &&
                         <div>
                             <DeleteUser ></DeleteUser>
                         </div>
                     }
                     {check === true &&
-                        <div>
-                            <button style={{ minWidth: "100%", marginTop: "20px", background: "#060a1f", color: "white", borderRadius: "10px", fontSize: "20px" }} onClick={() => handleAddComp()}>Dodaj Firme</button>
+                        <div >
+                            <button className="addButton" style={{ marginTop: "15vh" }} onClick={() => handleAddComp()}>Dodaj Firme</button>
                             {isShownAddComp &&
                                 <div>
                                     <AddCompany></AddCompany>
                                 </div>
                             }
-                            <button style={{ minWidth: "100%", marginTop: "20px", background: "#060a1f", color: "white", borderRadius: "10px", fontSize: "20px" }} onClick={() => handleAddCat()}>Dodaj Kategorię</button>
+                            <button className="addButton" style={{ marginTop: "20vh" }} onClick={() => handleAddCat()}>Dodaj Kategorię</button>
                             {isShownAddCat &&
                                 <div>
                                     <AddCategory></AddCategory>
                                 </div>
                             }
-                            <button style={{ minWidth: "100%", marginTop: "20px", background: "#060a1f", color: "white", borderRadius: "10px", fontSize: "20px" }} onClick={() => handleEditUser()}>Edytuj Użytkownika</button>
+                            <button className="addButton" style={{ marginTop: "25vh" }} onClick={() => handleEditUser()}>Edytuj Użytkownika</button>
                             {isShownEditUser &&
                                 <div>
                                     EditUser here
