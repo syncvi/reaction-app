@@ -1,0 +1,29 @@
+.addButton {
+    display: inline-block;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    background-color: #333;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    min-width: 50px;
+    margin-left: 45%
+
+  }
+  
+  /* Add a hover effect to the button */
+ .addButton:hover {
+    background-color: #666;
+  }
+  .centerButton {
+    
+    margin-top: 1vh;
+    width: 100%;
+  }
+ 
