@@ -1,7 +1,6 @@
 import React from "react"
 import "./moviesPage.css"
 import FilmList from "../../components/filmList/filmList";
-import '../../components/filmList/FilmList.css'
 
 
 

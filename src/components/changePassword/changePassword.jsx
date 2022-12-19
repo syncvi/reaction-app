@@ -1,17 +1,22 @@
 import React, { Component } from 'react'
+import styles from './changePassword.module.css'
 class ChangePassword extends Component{
     render(){
         return(
-            <div class="cont1">
-                <div className="container">
-                    <h2>Podaj nowe hasło</h2>
+            <div className = {styles.cont}>
+            <div className={styles.form_container}>
+                    <h3>Podaj nowe hasło</h3>
             <from>
                 <div class="mb-3">
-                    <label for="title" class="form-label" style={{fontSize:"22px", fontWeight:"bold", color:"#3b43de"}}>Nowe Hasło</label>
+                    <label for="title" class="form-label">Nowe Hasło</label>
+                    <input type="text" class="form-control" name="Haslo"/>
+                </div>
+                <div class="mb-3">
+                    <label for="title" class="form-label">Potwierdź Hasło</label>
                     <input type="text" class="form-control" name="Haslo"/>
                 </div>
                 <div>
-                    <button className="btn btn-success" style={{marginLeft: "320px", minWidth:"100px", marginBottom:"15px"}}>Zmień</button>
+                <button className={styles.Button2}>Zmień</button>
                 </div>
             </from>
             </div>

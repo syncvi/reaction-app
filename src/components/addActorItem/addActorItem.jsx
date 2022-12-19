@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from "axios"
+import styles from "./addActorItem.module.css"
 
 function AddActorItem (){
     const [Imię, setName] = useState("");
@@ -35,28 +36,28 @@ function AddActorItem (){
             });
     }
         return(
-            <div class="cont">
-                <div className="container">
+            <div className = {styles.cont}>
+            <div className={styles.form_container}>
                     <h2>Nowa osoba</h2>
-            <from onSubmit={(e) => handleSubmit(e)}>
+            <form onSubmit={(e) => handleSubmit(e)}>
                 <div class="mb-3">
-                    <label for="title" class="form-label" style={{fontSize:"22px", fontWeight:"bold", color:"#3b43de"}}>Imię</label>
+                    <label for="title" class="form-label">Imię</label>
                     <input type="text" class="form-control" name="Imie" onChange={(e) => setName(e.target.value)}/>
                 </div>
                 <div class="mb-3">
-                    <label for="title" class="form-label" style={{fontSize:"22px", fontWeight:"bold", color:"#3b43de"}}>Nazwisko</label>
+                    <label for="title" class="form-label">Nazwisko</label>
                     <input type="text" class="form-control" name="Nazwisko" onChange={(e) => setSurname(e.target.value)}/>
                 </div>
                 <div class="mb-3">
-                    <label for="title" class="form-label" style={{fontSize:"22px", fontWeight:"bold", color:"#3b43de"}}>Data Urodzenia</label>
+                    <label for="title" class="form-label">Data Urodzenia</label>
                     <input type="RRRR-MM-DD" class="form-control" name="Data_urodzenia" onChange={(e) => setDate(e.target.value)}/>
                 </div>
                 <div class="mb-3">
-                    <label for="title" class="form-label" style={{fontSize:"22px", fontWeight:"bold", color:"#3b43de"}}>Kraj Pochodzenia</label>
+                    <label for="title" class="form-label">Kraj Pochodzenia</label>
                     <input type="text" class="form-control" name="Kraj_Pochodzenia" onChange={(e) => setCountry(e.target.value)}/>
                 </div>
                 <div class="mb-3">
-                    <label for="title" class="form-label" style={{fontSize:"22px", fontWeight:"bold", color:"#3b43de"}}>Zdjęcie</label>
+                    <label for="title" class="form-label">Zdjęcie</label>
                     <input type="text" class="form-control" name="Zdjecie" onChange={(e) => setImage(e.target.value)}/>
                 </div>
                 {added ? (
@@ -67,7 +68,7 @@ function AddActorItem (){
                 <div class="mb-3">
                         <button className="btn btn-success" type="submit" onClick={(e) => handleSubmit(e)}>Dodaj Osobe</button>
                     </div>
-            </from>
+            </form>
             
             </div>
             </div>

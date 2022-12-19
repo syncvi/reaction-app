@@ -2,9 +2,12 @@
     padding: 20px 40px;
     border: none;
     border-radius: 10px;
-    background: #060a1f;
+    background: #E91E63;
     color: white;
     font-size: 15px;
     font-weight: 700;
     cursor:pointer;
+}
+.dejw .btn:hover{
+    background: #F06292;
 }

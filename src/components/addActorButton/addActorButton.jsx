@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import AddActorItem from '../addActorItem/addActorItem';
+import styles from './addActorButton.module.css'
 
 function AddActorButton() {
     var user = JSON.parse(localStorage.getItem("userInfo"))
@@ -16,8 +17,8 @@ function AddActorButton() {
     return (
         <div>
             {check === true &&
-                <div style={{ marginLeft: "92vh" }}>
-                    <button className="addButton" onClick={() => handleAdd()}>Dodaj Osobe</button>
+                <div>
+                    <button className={styles.addButton} onClick={() => handleAdd()}>Dodaj Osobe</button>
                     {isShown &&
                         <div><AddActorItem></AddActorItem>
                         </div>

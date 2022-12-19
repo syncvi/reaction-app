@@ -1,62 +1,44 @@
 import React, {Component} from "react";
 import CommentItem from "../commentItem/commentItem";
+import styles from './commentList.module.css'
 
 const CommentListI = [
 	{
-		User: "user1",
-		Comment: "Opis w luj dlugi ze az sie nie chce czytać",
+		User: "Robert",
+		Comment: "Bardzo fajny film, polecam.",
 		Rating: "3/5",
 	},
 	{
-		User: "user2",
-		Comment: "Opis w luj dlugi ze az sie nie chce czytać",
+		User: "Aneta",
+		Comment: "Prawię się popłakałam",
 		Rating: "2/5",
 	},
 	{
-		User: "user3",
-		Comment: "Opis w luj dlugi ze az sie nie chce czytać",
+		User: "Michał",
+		Comment: "Super!",
 		Rating: "4/5",
 	},
 	{
-		User: "user4",
-		Comment: "Opis w luj dlugi ze az sie nie chce czytać Opis w luj dlugi ze az sie nie chce czytać",
+		User: "Paweł",
+		Comment: "Pierwszy!",
 		Rating: "5/5",
 	},
-	{
-		User: "user5",
-		Comment: "Opis w luj dlugi ze az sie nie chce czytać",
-		Rating: "5/5",
-	},
-	{
-		User: "user6",
-		Comment: "Opis w luj dlugi ze az sie nie chce czytać",
-		Rating: "4/5",
-	},
-	{
-		User: "user7",
-		Comment: "Opis w luj dlugi ze az sie nie chce czytać",
-		Rating: "2/5",
-	},
-	{
-		User: "user8",
-		Comment: "Opis w luj dlugi ze az sie nie chce czytać",
-		Rating: "1/5",
-	},
+	
 ];
 class CommentList extends Component {
 	render() {
 		return (
-			<ul class="ul1">
+			<div className={styles.card_list}>
 				{CommentListI.map((data) => (
-					<li class="li1">
+					<div style={{maxWidth: "40vh"}}>
 						<CommentItem
 							User={data.User}
 							Comment={data.Comment}
 							Rating={data.Rating}
 						/>
-					</li>
+					</div>
 				))}
-			</ul>
+			</div>
 		);
 	}
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from "axios"
+import styles from './addCategory.module.css'
 
 function AddCategory() {
     const [Nazwa, setNazwa] = useState("");
@@ -28,12 +29,12 @@ function AddCategory() {
             });
     }
     return (
-        <div class="cont1">
-            <div className="container">
+        <div className = {styles.cont}>
+            <div className={styles.form_container}>
                 <h2>Nowa kategoria</h2>
                 <from onSubmit={(e) => handleSubmit(e)}>
                     <div class="mb-3">
-                        <label for="title" class="form-label" style={{ fontSize: "22px", fontWeight: "bold", color: "#3b43de" }}>Nazwa</label>
+                        <label for="title" class="form-label">Nazwa</label>
                         <input type="text" class="form-control" name="Imie" onChange={(e) => setNazwa(e.target.value)} />
                     </div>
                     {added ? (
@@ -42,7 +43,7 @@ function AddCategory() {
                         <></>
                     )}
                     <div class="mb-3">
-                        <button className="btn btn-success" type="submit" onClick={(e) => handleSubmit(e)}>Dodaj Kategorie</button>
+                        <button className={styles.Button2} onClick={(e) => handleSubmit(e)}>Dodaj Kategorie</button>
                     </div>
                 </from>
 

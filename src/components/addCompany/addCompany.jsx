@@ -1,24 +1,25 @@
 import React, { Component } from 'react'
+import styles from './addCompany.module.css'
 
 class AddCompany extends Component{
     render(){
         return(
-            <div class="cont1">
-                <div className="container">
+            <div className = {styles.cont}>
+            <div className={styles.form_container}>
                     <h2>Nowa Firma Produkcyjna</h2>
-            <from>
+            <form>
                 <div class="mb-3">
-                    <label for="title" class="form-label" style={{fontSize:"22px", fontWeight:"bold", color:"#3b43de"}}>Nazwa</label>
+                    <label for="title" class="form-label" >Nazwa</label>
                     <input type="text" class="form-control" name="Nazwa"/>
                 </div>
                 <div class="mb-3">
-                    <label for="title" class="form-label" style={{fontSize:"22px", fontWeight:"bold", color:"#3b43de"}}>Siedziba</label>
+                    <label for="title" class="form-label" >Siedziba</label>
                     <input type="text" class="form-control" name="Siedziba"/>
                 </div>
                 <div>
-                    <button className="btn btn-success" style={{marginLeft: "0px", minWidth:"100px", marginBottom:"15px"}}>Dodaj</button>
+                    <button className={styles.Button2} >Dodaj</button>
                 </div>
-            </from>
+            </form>
             </div>
             </div>
         )

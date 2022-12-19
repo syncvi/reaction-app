@@ -1,10 +1,11 @@
 import React, { useState } from "react"
-import "./myProfilPage.css"
+import styles from "./myProfilPage.module.css"
 import axios from "axios"
 import DeleteUser from "../../components/deleteUser/deleteUser"
 import ChangePassword from "../../components/changePassword/changePassword"
 import AddCompany from "../../components/addCompany/addCompany"
 import AddCategory from "../../components/addCategory/addCategory"
+import EditUser from "../../components/editUser/editUser"
 
 // const dane = {
 //     Login: "Uzytkownik_nick", StatusPremium: "Premium", Picture: "jakiesTam", ListFilm: ["Wiedźmin", "Avatar", "Avengers", "Chicago Fire"],
@@ -59,81 +60,78 @@ export default function Profile() {
             <div class="main">
                 <div className="container emp-profile" style={{ marginTop: "5vh", marginBottom: "2vh" }}>
                     <div className="row">
-                        <div className="col-md-4">
-                            <div className="profile-img"><img class="img-fluid" src={dane.Zdjęcie} alt="profil" style={{ height: "400px", width: "400px", paddingLeft: "10px" }}></img></div>
+                        <div className="col" style={{ maxWidth: "fit-content" }}>
+                            <img src={dane.Zdjęcie} style={{ height: "450px" }}>
+                            </img>
                         </div>
                         <div className="col-md-6">
                             <div className="profile-head">
-                                <h3 class="login">Witaj {dane.Login}!</h3>
+                                <div className="col" style={{ fontSize: "50px" }}>Witaj {dane.Login}!</div>
                                 {dane.StatusPremium ? (
                                     <h6 class="premium">Premium</h6>
                                 ) : (
                                     <div style={{ marginBottom: "0.6rem" }}>
                                         <h6 class="premium">Brak Premium</h6>
-                                        <button className="btn btn-success" onClick={(e) => handleSubmit(e)}>Zakup premium</button>
+                                        <button className={styles.addButton} onClick={(e) => handleSubmit(e)}>Zakup premium</button>
                                     </div>
                                 )}
                                 <h6 class="premium">{dane.TypKonta}</h6>
-                            </div>
-                            <div className="row">
-                                <div className="col-md-8 pl-5 about-info">
-                                    <div className="tab-content profile-tab" id="myTabContent">
 
-                                        <div className="col-md-10">
-                                            <label htmlFor="Login"></label>
-                                        </div>
-                                        <div className="row1">
-                                            <div className="col-md-10">
-                                                <ul class="ul2">
-                                                    <h5>Obserwowane Filmy:</h5>
-                                                    {/* {dane.ListFilm.map((data) => (
-                                                            <li class="li2">
-                                                                {data}
-                                                            </li>
-                                                        ))} */}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div className="card-list">
+                                    <h6>Obserwowane Filmy:</h6>
+
                                 </div>
+                                <ul>
+                                    <li>
+                                    Toy Story
+                                    </li>
+                                    <li>
+                                        
+                                        Wiedźmin
+                                    </li>
+                                </ul>
+
                             </div>
                         </div>
                     </div>
-                    <button className="addButton" style={{ margin: "auto" }} onClick={() => handleChangePwd()}>Zmień hasło</button>
+                    <div style={{marginTop:"1vh"}}>
+                    <button className={styles.addButton} onClick={() => handleChangePwd()}>Zmień hasło</button>
                     {isShownChangePwd &&
                         <div>
                             <ChangePassword></ChangePassword>
                         </div>
 
                     }
-                    <button className="addButton" style={{ margin: "inherit" }} onClick={() => handleDelete()}>Usuń Użytkownika</button>
-                    {isShownDelete &&
-                        <div>
-                            <DeleteUser ></DeleteUser>
-                        </div>
-                    }
+
                     {check === true &&
-                        <div >
-                            <button className="addButton" style={{ marginTop: "15vh" }} onClick={() => handleAddComp()}>Dodaj Firme</button>
+                        <>
+                            <button className={styles.addButton} onClick={() => handleDelete()}>Zbanuj Użytkownika</button>
+                            {isShownDelete &&
+                                <div>
+                                    <DeleteUser ></DeleteUser>
+                                </div>
+                            }
+                            <button className={styles.addButton} onClick={() => handleAddComp()}>Dodaj Firme</button>
                             {isShownAddComp &&
                                 <div>
                                     <AddCompany></AddCompany>
                                 </div>
                             }
-                            <button className="addButton" style={{ marginTop: "20vh" }} onClick={() => handleAddCat()}>Dodaj Kategorię</button>
+                            <button className={styles.addButton} onClick={() => handleAddCat()}>Dodaj Kategorię</button>
                             {isShownAddCat &&
                                 <div>
                                     <AddCategory></AddCategory>
                                 </div>
                             }
-                            <button className="addButton" style={{ marginTop: "25vh" }} onClick={() => handleEditUser()}>Edytuj Użytkownika</button>
+                            <button className={styles.addButton} onClick={() => handleEditUser()}>Edytuj Użytkownika</button>
                             {isShownEditUser &&
                                 <div>
-                                    EditUser here
+                                    <EditUser />
                                 </div>
                             }
-                        </div>
+                        </>
                     }
+                </div>
                 </div>
             </div>
 

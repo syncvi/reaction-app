@@ -12,11 +12,12 @@
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
-    position: absolute;
+    min-width: 25vh;
+    margin-left: calc(50% - 12.5vh)
 
-}
-
-/* Add a hover effect to the button */
-.addButton:hover {
+  }
+  
+  /* Add a hover effect to the button */
+ .addButton:hover {
     background-color: #666;
-}
+  }

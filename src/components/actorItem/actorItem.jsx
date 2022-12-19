@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import ChangeActor from "../changeActor/changeActor";
 import DeleteActor from "../deleteActor/deleteActor";
 import FollowButton from "../followButton/followButton";
-import "./actorItem.css"
+import styles from "./actorItem.module.css"
 
 const ActorItem = (props) => {
 
@@ -20,42 +20,40 @@ const ActorItem = (props) => {
   }
 
   return (
-    <div class="card">
-      <div class="image">
+    <div className = {styles.card}>
+      <div className={styles.card.img}>
         <img src={props.Picture} alt="profil" />
       </div>
-      <div class="title">
-        <h3 style={{ paddingLeft: "10px" }}>{props.Name}</h3>
-        <h3 style={{ paddingLeft: "10px" }}>{props.Surname}</h3>
+      <div className={styles.card.title}>
+        <h3>{props.Name}</h3>
+        <h3>{props.Surname}</h3>
       </div>
-      <div class="info">
+      <div className={styles.card.image}>
         <div class="columnleft">
           <p>Data Urodzenia: {props.Birthday}</p>
         </div>
         <div class="columnright">
           <div class="Length">
-            <h6 style={{ paddingLeft: "10px" }}>
+            <p>
               Kraj pochodzenia: {props.Country}
-            </h6>
+            </p>
           </div>
         </div>
       </div>
-      <div class="btn">
-        <FollowButton />
-      </div>
       {check == true &&
-        <div class="btn" style={{ margin: "10px" }}  >
-          <button class="btn" onClick={() => handleAdd1()}>Edytuj Aktora</button>
+        <div>
+          <button className={styles.filmItem} onClick={() => handleAdd1()}>Edytuj Osobę</button>
           {isShown1 &&
             <div>
               <ChangeActor />
+              
             </div>
           }
         </div>
       }
       {check == true &&
-        <div class="btn" style={{ margin: "10px" }} >
-          <button class="btn" onClick={() => handleAdd2()}>Usuń Aktora</button>
+        <div>
+          <button className={styles.filmItem} onClick={() => handleAdd2()}>Usuń Osobę</button>
           {isShown2 &&
             <div>
               <DeleteActor />

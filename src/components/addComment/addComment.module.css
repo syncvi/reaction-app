@@ -1,19 +1,19 @@
 .cont {
-    max-width: 90%;
-	margin-left: 5%;
+    min-width: 95%;
+    max-width: 95%;
     margin-top: 2vh;
     margin-bottom: 2vh;
     background: #757575;
     border-radius: 10px;
     color:#EEEEEE;
+    margin-left: 2.5%;
+    margin-top: 2vh;
 }
 
 .form_container {
 	min-width: 50%;
 	margin: auto;
-	border: 1px solid #ccc;
 	border-radius: 5px;
-	box-shadow: 2px 2px 5px #ccc;
 	padding: 20px;
 }
 
@@ -39,7 +39,7 @@ input {
 	font-weight: bold;
 	color: black;
 }
-button[type="submit"] {
+.Button2 {
 	display: inline-block;
     border: none;
     outline: none;
@@ -57,6 +57,28 @@ button[type="submit"] {
     margin-left: calc(50% - 12.5vh)
 }
 
-button[type="submit"]:hover {
+.Button2:hover {
 	background-color: #666;
 }
+
+
+.rating {
+    display: inline-block;
+    position: relative;
+    font-size: 2em;
+    color: #ccc;
+  }
+  
+  .rating .star {
+    display: inline-block;
+    overflow: hidden;
+    color: #f2b600;
+  }
+  
+  
+  .rating .star:hover:before,
+  .rating .star:hover ~ .star:before,
+  .rating .star:focus:before,
+  .rating .star:focus ~ .star:before {
+    content: "★";
+  }

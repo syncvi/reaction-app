@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import './matchActorFilm.css'
+import styles from './matchActorFilm.module.css'
 
 function MatchActorFilm() {
     const [Imię, setName] = useState("");
@@ -74,25 +74,25 @@ function MatchActorFilm() {
 
     }
     return (
-        <div class="cont1">
-            <div className="container">
-                <h2>Dodaj osobę do filmu</h2>
+        <div className = {styles.cont}>
+            <div className={styles.form_container}>
+                <h2>Przypisz osobę do filmu</h2>
                 <form onSubmit={(e) => handleSubmit(e)}>
                     <div class="mb-3">
-                        <label class="form-label" style={{ fontSize: "22px", fontWeight: "bold", color: "#3b43de" }}>Imię Osoby</label>
+                        <label class="form-label">Imię Osoby</label>
                         <input type="text" class="form-control" name="Imie" onChange={(e) => setName(e.target.value)} />
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" style={{ fontSize: "22px", fontWeight: "bold", color: "#3b43de" }}>Nazwisko Osoby</label>
+                        <label class="form-label">Nazwisko Osoby</label>
                         <input type="text" class="form-control" name="Nazwisko" onChange={(e) => setSurname(e.target.value)} />
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" style={{ fontSize: "22px", fontWeight: "bold", color: "#3b43de" }}>Stanowisko Osoby</label>
+                        <label class="form-label">Rola lub Stanowisko Osoby</label>
                         <input type="text" class="form-control" name="Stanowisko" onChange={(e) => setJob(e.target.value)} />
                     </div>
                     <div>
-                        <button className="btn btn-success" style={{ marginLeft: "20%", marginRight: "45vh", minWidth: "100px", marginBottom: "20px" }} onClick={() => (setType('Aktor'))} onSubmit={(e) => handleSubmit(e)}>Dodaj jako aktora</button>
-                        <button className="btn btn-success" style={{ marginRight: "20%", minWidth: "100px", marginBottom: "20px" }} onClick={() => (setType('Pracownik'))} onSubmit={(e) => handleSubmit(e)}>Dodaj jako pracownika</button>
+                        <button className={styles.Button2} onClick={() => (setType('Aktor'))} onSubmit={(e) => handleSubmit(e)}>Dodaj jako aktora</button>
+                        <button className={styles.Button2} onClick={() => (setType('Pracownik'))} onSubmit={(e) => handleSubmit(e)}>Dodaj jako pracownika</button>
                     </div>
                 </form>
             </div>

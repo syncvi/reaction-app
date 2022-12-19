@@ -1,5 +1,5 @@
 import React from "react"
-import "./personsPage.css"
+import styles from "./personsPage.module.css"
 import ActorList from "../../components/actorList/actorList"
 
 const PersonsPage = () => {

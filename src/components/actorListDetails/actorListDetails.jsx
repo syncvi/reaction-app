@@ -31,9 +31,10 @@ class ActorListDetails extends Component {
 		return (
 			<div>
 				{this.state.nameList.length === 0 && (
-                    <div>There are no people added to the movie yet</div>
+                    <div>Nie dodano jeszcze aktorów do tego tytułu</div>
                 )}
                 {this.state.nameList.length !== 0 && (
+                    <div>Lista Aktorów:
 					<ul>
 						{this.state.nameList.map((item) => (
 							<li key={item.Imię}>
@@ -41,6 +42,7 @@ class ActorListDetails extends Component {
 							</li>
 						))}
 					</ul>
+                    </div>
                 )}
 				
 			</div>

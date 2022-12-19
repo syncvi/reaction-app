@@ -11,25 +11,25 @@ const FilmItem = (props) => {
 	};
 
 	return (
-		<div class="card">
-			<div class="img">
+		<div className={styles.card}>
+			<div className={styles.card.img}>
 				<img src={props.Picture} />
 			</div>
-			<div class="title">
+			<div className={styles.card.title}>
 				<h3>{props.Title}</h3>
 			</div>
-			<div class="info">
+			<div className={styles.card.image}>
 				<div class="columnleft">
 					<p>Data Wydania: {props.ReleaseDate}</p>
 				</div>
 				<div class="columnright">
 					<div class="Length">
-						<p>Długość filmu: {props.Length}</p>
+						<p>Długość filmu: {props.Length} minut</p>
 					</div>
 				</div>
 			</div>
 
-        <button  onClick={() => handleDetails(props)}>Szczegóły</button>
+        <button className={styles.filmItem} onClick={() => handleDetails(props)}>Szczegóły</button>
 
 		</div>
 	);

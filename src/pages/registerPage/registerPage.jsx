@@ -1,12 +1,13 @@
-import React, {useState} from "react"
-import { Link} from "react-router-dom"
+import React, { useState } from "react"
+import { Link } from "react-router-dom"
 import axios from "axios"
-import './registerPage.css'
+import styles from './registerPage.module.css'
 
 export default function Register() {
     // initial state
     const [EMail, setEmail] = useState("");
     const [Hasło, setPassword] = useState("");
+    const [PowtórzHasło, setConfirmPassword] = useState("");
     const [Login, setLogin] = useState("");
     const [Zdjęcie, setImage] = useState("");
     const [register, setRegister] = useState(false);
@@ -35,12 +36,12 @@ export default function Register() {
             })
             .catch((error) => {
                 error = new Error();
-                
+
             });
     };
     return (
-        <div class="cont">
-            <div className="container">
+        <div className={styles.cont}>
+            <div className={styles.form_container}>
                 <div className="row">
                     <div className="col-md-7">
                         <h1>Rejestracja</h1>
@@ -59,20 +60,32 @@ export default function Register() {
                             <input type="password" class="form-control" name="Hasło" placeholder="***********" onChange={(e) => setPassword(e.target.value)} />
                         </div>
                         <div class="mb-3">
+                            <label for="exampleFormControlInput3" class="form-label">Powtórz Hasło</label>
+                            <input type="password" class="form-control" name="Hasło" placeholder="***********" onChange={(e) => setConfirmPassword(e.target.value)} />
+                        </div>
+                        <div class="mb-3">
                             <label for="exampleFormControlInput4" class="form-label">Link do zdjęcia</label>
                             <input type="text" class="form-control" name="Zdjęcie" placeholder="https://paczaizm.pl/content/geralt.jpg" onChange={(e) => setImage(e.target.value)} />
                         </div>
                         <div class="mb-3">
-                            <button className="btn btn-success" type="submit" onClick={(e) => handleSubmit(e)}>Zarejestruj</button>
-                            <label for="btnSuccess" class="form-label" style={{ margin: "0px 0px 0px 970px" }}>Już masz konto?</label>
-                            <Link className="link" to="/login" style={{ textDecoration: "none" }}>Logowanie</Link>
+                            <button className={styles.Button2} onClick={(e) => handleSubmit(e)}>Zarejestruj</button>
+                            {register ? (
+                        <p className="text-success" style={{color: "white"}}>You Are Registered Successfully</p>
+                    ) : (
+                        <p></p>
+                    )}
+
+
+                        </div>
+                        <div>
+                            <label for="btnSuccess" class="form-label">Masz już konto?</label>
+                            
+                        </div>
+                        <div>
+                        <Link className="link" to="/login" style={{ textDecoration: "none" }}>Logowanie</Link>
                         </div>
                     </form>
-                    {register ? (
-                        <p className="text-success">You Are Registered Successfully</p>
-                    ) : (
-                        <p className="text-danger">You Are Not Registered</p>
-                    )}
+                    
                 </div>
             </div>
         </div>

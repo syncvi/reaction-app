@@ -1,26 +1,31 @@
 import React, { Component } from 'react'
+import styles from './changeActor.module.css'
 
 class ChangeActor extends Component{
     render(){
         return(
-            <div class="cont">
-                <div className="container">
+            <div className = {styles.cont}>
+            <div className={styles.form_container}>
                     <h2>Zmień dane aktora</h2>
             <from>
                 <div class="mb-3">
-                    <label for="title" class="form-label" style={{fontSize:"22px", fontWeight:"bold", color:"#3b43de"}}>ID Aktora</label>
-                    <input type="number" class="form-control" name="Aktor_Id"/>
-                </div>
-                <div class="mb-3">
-                    <label for="title" class="form-label" style={{fontSize:"22px", fontWeight:"bold", color:"#3b43de"}}>Imię aktora</label>
+                    <label for="title" class="form-label" >Imię aktora</label>
                     <input type="text" class="form-control" name="Imie"/>
                 </div>
                 <div class="mb-3">
-                    <label for="title" class="form-label" style={{fontSize:"22px", fontWeight:"bold", color:"#3b43de"}}>Nazwisko aktora</label>
+                    <label for="title" class="form-label" >Nazwisko aktora</label>
+                    <input type="text" class="form-control" name="Nazwisko"/>
+                </div>
+                <div class="mb-3">
+                    <label for="title" class="form-label" >Data Urodzenia</label>
+                    <input type="RRRR-MM-DD" class="form-control" name="Nazwisko"/>
+                </div>
+                <div class="mb-3">
+                    <label for="title" class="form-label" >Kraj Pochodzenia</label>
                     <input type="text" class="form-control" name="Nazwisko"/>
                 </div>
                 <div>
-                    <button className="btn btn-success" style={{marginLeft: "320px", minWidth:"100px", marginBottom:"15px"}}>Zmień</button>
+                    <button type="submit">Zmień</button>
                 </div>
             </from>
             </div>

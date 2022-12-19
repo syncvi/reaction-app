@@ -1,24 +1,25 @@
 import React from "react"
-import "./commentItem.css"
+import styles from "./commentItem.module.css"
 
 const FilmItem = (props) => {
-      return(
-          <div class="card1">
-            <div class="title1">
-                <h3 style={{paddingLeft:"10px"}}>{props.User}</h3>
-              </div>
-            <div class="info1">
-              <div class="columnleft1">
-                <p>{props.Comment}</p>
-              </div>
-              <div class="columnright1">
-                <div class="Length1">
-                  <h6> {props.Rating}
-                  </h6>
-                </div>
-              </div>
-            </div>
+  return (
+    <div className={styles.card}>
+      <div className={styles.card.title}>
+        <h3>{props.User}</h3>
+      </div>
+      <div className={styles.card.title}>
+          <p>{props.Comment}</p>
+       </div>
+       <div className={styles.card.title}>
+          <div className={styles.rating}>
+            <span className={styles.star}>★</span>
+            <span className={styles.star}>★</span>
+            <span className={styles.star}>★</span>
+            <span className={styles.star}>★</span>
+            <span className={styles.star}>★</span>
           </div>
-            );
-      };
-      export default FilmItem
+      </div>
+    </div>
+  );
+};
+export default FilmItem

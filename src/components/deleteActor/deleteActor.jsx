@@ -3,7 +3,7 @@ import './deleteActor.css'
 class DeleteActor extends Component {
     render() {
         return (
-            <h2>Usun se</h2>
+            <h2>Czy na pewno?</h2>
         )
     }
 

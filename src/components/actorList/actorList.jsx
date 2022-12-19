@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import AddActorButton from "../addActorButton/addActorButton";
 import ActorItem from "../actorItem/actorItem";
-import "./actorList.css";
+import styles from "./actorList.module.css";
 
 
 class ActorList extends Component {
@@ -22,12 +22,15 @@ class ActorList extends Component {
 
     render() {
         return (
-
-
             <div>
-                <div className="card-list">
+                 <div className={styles.form_container}>
+                    <h3 style={{maxWidth: "35vh", marginRight: "0px"}}>Wyszukaj osobę</h3>
+                    <input type="text" className={styles.form_input} placeholder="Wpisz Imię"></input>
+                        <button className={styles.Button2}>Szukaj!</button>
+                </div>
+                <div className={styles.card_list}>
                     {this.state.films.map((data) => (
-                        <div class="card">
+                        <div>
                             <ActorItem
                                 Name={data.Imię}
                                 Surname={data.Nazwisko}
@@ -37,7 +40,6 @@ class ActorList extends Component {
                         </div>
                     ))}
                 </div>
-
                 <AddActorButton />
             </div>
         );

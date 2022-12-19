@@ -8,6 +8,8 @@ import AddCompany from "../../components/addCompany/addCompany"
 import DeleteFilm from "../../components/deleteFilm/deleteFilm"
 import ChangeFilm from "../../components/changeFilm/changeFilm"
 import ActorListDetails from '../../components/actorListDetails/actorListDetails';
+import styles from "./movieDetailsPage.module.css"
+import MatchCompanyFilm from '../../components/matchCompanyFilm/matchCompanyFilm';
 
 const DetailsFilm = () => {
     const [props, setProps] = useState("");
@@ -16,12 +18,15 @@ const DetailsFilm = () => {
     const [isShown3, setIsShown3] = useState(false);
     const [isShown4, setIsShown4] = useState(false);
     const [isShown5, setIsShown5] = useState(false);
+    const [isShown6, setIsShown6] = useState(false);
     var userInfo = JSON.parse(localStorage.getItem('userInfo'));
     var check = false
+    var check2 = false
     var checkLogged = false
     if (userInfo !== null) checkLogged = true
     if (checkLogged && (userInfo.TypKonta === 'Moderator' || userInfo.TypKonta === 'Administrator')) check = true
-    else check = false
+    if(checkLogged) check2 = true
+
     useEffect(() => {
         var retrievedObject = localStorage.getItem('filmTitle');
         setProps(JSON.parse(retrievedObject))
@@ -43,34 +48,38 @@ const DetailsFilm = () => {
     const handleAdd5 = () => {
         setIsShown5(current => !current);
     }
+    const handleAdd6 = () => {
+        setIsShown6(current => !current);
+    }
 
     return (
-        <div class="main1">
+        <div class="main1" style={{ marginTop: "2vh" }}>
             <div className="container">
-                <div className="row" style={{ paddingTop: "30px", paddingBottom: "30px" }}>
-                    <div className="col" style={{ fontSize: "50px" }}>
-                        {props.Title}
-                    </div>
-                </div>
                 <div className="row">
                     <div className="row">
                         <div className="col" style={{ maxWidth: "fit-content" }}>
-                            <img src={props.Picture} style={{ height: "300px" }} alt=""></img>
+                            <img src={props.Picture} style={{ height: "450px" }} alt=""></img>
                         </div>
                         <div className="col">
                             <div className="row">
-                                <div className="col" style={{ minWidth: "75vh" }}>
-                                    <h3>Język: {props.Language}</h3>
-                                    Data wydania : {props.ReleaseDate}
-                                    <div className="row" style={{ paddingTop: "1vh" }}>
+                                <div className="col" style={{ minWidth: "100vh" }}>
+                                    <div className="col" style={{ fontSize: "50px" }}>
+                                        {props.Title}
+                                    </div>
+                                    <h3 >Język: {props.Language}</h3>
+                                    <p style={{ paddingTop: "2vh" }}>Data wydania : {props.ReleaseDate}</p>
+                                    <div className="row" style={{ paddingTop: "2vh" }}>
                                         <div style={{ maxWidth: "1100px" }}>
                                             Opis: {props.Description}
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col" style={{ paddingLeft: "3vh" }}>Ocena: np. 3/5
-                                    <div className="col" style={{ paddingTop: "1vh" }}><FollowButton />
-                                    </div>
+
+                                <div className="col" style={{ paddingLeft: "3vh" }}>
+                                    {check2 &&
+                                        <div className="col" style={{ paddingTop: "1vh" }}><FollowButton />
+                                            Ocena: 5/5
+                                        </div>}
                                     <div className="col">
                                         <ActorListDetails />
                                     </div>
@@ -82,33 +91,33 @@ const DetailsFilm = () => {
                 <div className="row">
                 </div>
                 {check === true &&
-                    <div>
-                        <button className="addButton" style={{ marginTop: "-30vh", marginLeft: "60vh" }} onClick={() => handleAdd1()}>Dodaj Aktora</button>
+                    <div style={{ marginTop: "1vh" }}>
+                        <button className={styles.addButton} onClick={() => handleAdd1()}>Dodaj Osobę</button>
                         {isShown1 &&
                             <div>
                                 <MatchActorFilm ></MatchActorFilm>
                             </div>
                         }
 
-                        <button className="addButton" style={{ marginTop: "-25vh", marginLeft: "60vh" }} onClick={() => handleAdd2()}>Dodaj Kategorię</button>
+                        <button className={styles.addButton} onClick={() => handleAdd2()}>Dodaj Kategorię</button>
                         {isShown2 &&
                             <div>
                                 <MatchCategoryFilm></MatchCategoryFilm>
                             </div>
                         }
-                        <button className="addButton" style={{ marginTop: "-20vh", marginLeft: "60vh" }} onClick={() => handleAdd5()}>Dodaj wytwórnię</button>
+                        <button className={styles.addButton} onClick={() => handleAdd5()}>Dodaj wytwórnię</button>
                         {isShown5 &&
                             <div>
-                                <AddCompany />
+                                <MatchCompanyFilm />
                             </div>
                         }
-                        <button className="addButton" style={{ marginTop: "-15vh", marginLeft: "60vh" }} onClick={() => handleAdd4()}>Edytuj Film</button>
+                        <button className={styles.addButton} onClick={() => handleAdd4()}>Edytuj Film</button>
                         {isShown4 &&
                             <div>
                                 <ChangeFilm />
                             </div>
                         }
-                        <button className="addButton" style={{ marginTop: "-10vh", marginLeft: "60vh" }} onClick={() => handleAdd3()}>Usuń film</button>
+                        <button className={styles.addButton} onClick={() => handleAdd3()}>Usuń film</button>
                         {isShown3 &&
                             <div>
                                 <DeleteFilm ></DeleteFilm>
@@ -116,13 +125,15 @@ const DetailsFilm = () => {
                         }
                     </div>
                 }
-                <div className="row" style={{ paddingTop: "50px" }}>
+                <div className="row" style={{ paddingTop: "10vh" }}>
 
-                    <div className="col" style={{ paddingTop: "50px" }}>
+                    <div className="col" >
                         <CommentList />
                     </div>
                 </div>
-                {checkLogged &&
+                {check2 && <button className={styles.addButton} onClick={() => handleAdd6()}>Dodaj komentarz</button>}
+
+                {isShown6 &&
                     <div className="row" style={{ paddingTop: "50px" }}>
                         <AddComment />
                     </div>}
