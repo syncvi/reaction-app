@@ -1,46 +1,46 @@
-import React, {Component} from "react";
+import React, { Component, useEffect, useState } from "react";
+import axios from 'axios'
 import CommentItem from "../commentItem/commentItem";
 import styles from './commentList.module.css'
+function CommentList() {
+	var retrievedObject = JSON.parse(localStorage.getItem('filmTitle'));
+	var Film_Id = retrievedObject.Id
+	const [observed, setObserved] = useState([]);
 
-const CommentListI = [
-	{
-		User: "Robert",
-		Comment: "Bardzo fajny film, polecam.",
-		Rating: "3/5",
-	},
-	{
-		User: "Aneta",
-		Comment: "Prawię się popłakałam",
-		Rating: "2/5",
-	},
-	{
-		User: "Michał",
-		Comment: "Super!",
-		Rating: "4/5",
-	},
-	{
-		User: "Paweł",
-		Comment: "Pierwszy!",
-		Rating: "5/5",
-	},
-	
-];
-class CommentList extends Component {
-	render() {
-		return (
-			<div className={styles.card_list}>
-				{CommentListI.map((data) => (
-					<div style={{maxWidth: "40vh"}}>
-						<CommentItem
-							User={data.User}
-							Comment={data.Comment}
-							Rating={data.Rating}
-						/>
-					</div>
-				))}
-			</div>
-		);
-	}
+	useEffect(() => {
+		console.log("Sent Axios")
+		const configuration = {
+			method: "get",
+			url: `http://localhost:8080/routes/Opinia/findComments/${Film_Id}`,
+
+		};
+
+		axios(configuration).then((res) => {
+			console.log(res.data);
+			setObserved(res.data)
+		});
+	}, [])
+
+	return (
+		<>
+			{observed.length !== 0  ?
+				<div className={styles.card_list}>
+					{observed.map((data) => (
+						<div style={{ maxWidth: "40vh" }}>
+							<CommentItem
+								User={data.Login}
+								Comment={data.Komentarz}
+								Rating={data.Ocena}
+							/>
+						</div>))}
+				</div> :
+				<div>
+					<h3>Nikt nie dodał jeszcze komentarzy</h3>
+				</div>
+
+			}
+		</>
+	)
 }
 
 export default CommentList;

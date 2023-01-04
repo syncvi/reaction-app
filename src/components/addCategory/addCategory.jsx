@@ -1,11 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from "axios"
 import styles from './addCategory.module.css'
 
 function AddCategory() {
     const [Nazwa, setNazwa] = useState("");
-
+    const [Categories, setCategories] = useState()
     const [added, setAdded] = useState(false);
+
+    useEffect(() => {
+        const configuration = {
+            method: "get",
+            url: `http://localhost:8080/routes/Kategoria`,
+        };
+
+        axios(configuration).then((res) => {
+            var kategorie = ''
+            for(var i = 0; i < res.data.length; i++) {
+                kategorie = kategorie + ' ' + res.data[i].Nazwa
+            }
+            setCategories(kategorie)
+        });
+    }, [])
 
     const handleSubmit = (e) => {
         // prevent the form from refreshing the whole page
@@ -37,6 +52,8 @@ function AddCategory() {
                         <label for="title" class="form-label">Nazwa</label>
                         <input type="text" class="form-control" name="Imie" onChange={(e) => setNazwa(e.target.value)} />
                     </div>
+                    <p>Dostępne kategorie</p>
+                    <p style={{fontSize: "12px"}}>{Categories}</p>  
                     {added ? (
                         <p className="text-success">Category added succesfully</p>
                     ) : (

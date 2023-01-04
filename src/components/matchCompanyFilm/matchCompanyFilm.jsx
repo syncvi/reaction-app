@@ -1,10 +1,26 @@
-import React, { Component, useState } from 'react'
+import React, { Component, useState, useEffect } from 'react'
 import styles from './matchCompanyFilm.module.css'
 import axios from 'axios'
 function MatchCompanyFilm() {
     const [Nazwa, setName] = useState("");
+    const [Companies, setCompanies] = useState()
     var filmInfo = JSON.parse(localStorage.getItem('filmTitle'));
     var Film_Id = filmInfo.Id;
+
+    useEffect(() => {
+        const configuration = {
+            method: "get",
+            url: `http://localhost:8080/routes/Firma_Produkcyjna`,
+        };
+
+        axios(configuration).then((res) => {
+            var kategorie = ''
+            for(var i = 0; i < res.data.length; i++) {
+                kategorie = kategorie + ' ' + res.data[i].Nazwa
+            }
+            setCompanies(kategorie)
+        });
+    }, [])
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -59,6 +75,8 @@ function MatchCompanyFilm() {
                         <label for="title" class="form-label"  >Nazwa Firmy</label>
                         <input type="text" class="form-control" name="Kategoria_Id" onChange={(e) => setName(e.target.value)} />
                     </div>
+                    <p>Dostępne Firmy</p>
+                    <p style={{fontSize: "12px"}}>{Companies}</p>  
                     <div>
                     <button className={styles.Button2}  onSubmit={(e) => handleSubmit(e)}>Dodaj</button>
                     </div>

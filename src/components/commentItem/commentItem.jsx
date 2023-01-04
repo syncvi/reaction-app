@@ -8,16 +8,14 @@ const FilmItem = (props) => {
         <h3>{props.User}</h3>
       </div>
       <div className={styles.card.title}>
-          <p>{props.Comment}</p>
-       </div>
-       <div className={styles.card.title}>
-          <div className={styles.rating}>
-            <span className={styles.star}>★</span>
-            <span className={styles.star}>★</span>
-            <span className={styles.star}>★</span>
-            <span className={styles.star}>★</span>
-            <span className={styles.star}>★</span>
-          </div>
+        <p>{props.Comment}</p>
+      </div>
+      <div className={styles.card.title}>
+        {[...Array(props.Rating)].map((_, i) => (
+          <span key={i} role="img" aria-label="star" style={{marginLeft:"1vh", marginBottom:"1vh"}}>
+            ⭐
+          </span>
+        ))}
       </div>
     </div>
   );

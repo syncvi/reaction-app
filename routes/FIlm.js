@@ -101,4 +101,22 @@ route.get("/findActors/:id", (req, res) => {
         })
 })
 
+route.get("/findCategories/:id", (req, res) => {
+    const id = req.params.id;
+
+    models.Film.findOne({ where: { Film_Id: id }, include: { model: models.Kategoria, as: 'Kategoria_Id_Kategoria' } })
+        .then((data) => {
+            res.send(JSON.stringify(data, null, 2))
+        })
+})
+
+route.get("/findCompanies/:id", (req, res) => {
+    const id = req.params.id;
+
+    models.Film.findOne({ where: { Film_Id: id }, include: { model: models.Firma_Produkcyjna, as: 'Firma_Id_Firma_Produkcyjnas' } })
+        .then((data) => {
+            res.send(JSON.stringify(data, null, 2))
+        })
+})
+
 exports = module.exports = route;

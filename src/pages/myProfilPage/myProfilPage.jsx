@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styles from "./myProfilPage.module.css"
 import axios from "axios"
 import DeleteUser from "../../components/deleteUser/deleteUser"
@@ -13,12 +13,29 @@ import EditUser from "../../components/editUser/editUser"
 // }
 
 export default function Profile() {
+
+    const [observed, setObserved] = useState([]);
     var dane = JSON.parse(localStorage.getItem('userInfo'));
 
     var check = false
     if (dane !== null && (dane.TypKonta === 'Moderator' || dane.TypKonta === 'Administrator')) check = true
     else check = false
 
+    useEffect(() => {
+        const configuration = {
+            method: "get",
+            url: `http://localhost:8080/routes/Obserwuje/findObserved/${dane.Login}`,
+        };
+
+        axios(configuration).then((res) => {
+            var kategorie = []
+            for (var i = 0; i < res.data.length; i++) {
+                var name = res.data[i].Film["Tytuł"]
+                kategorie.push(name);
+            }
+            setObserved(kategorie)
+        });
+    }, [])
     const handleSubmit = (e) => {
         axios
             .post('http://localhost:8080/routes/Uzytkownik/update', {
@@ -77,61 +94,64 @@ export default function Profile() {
                                 )}
                                 <h6 class="premium">{dane.TypKonta}</h6>
 
-                                <div className="card-list">
-                                    <h6>Obserwowane Filmy:</h6>
+                                <div>
+                                    {observed.length === 0 && (
+                                        <div>Nie obserwujesz jeszcze żadnych tytułów</div>
+                                    )}
+                                    {observed.length !== 0 && (
+                                        <div>Obserwowane filmy:
+                                            <ul>
+                                                {observed.map((item) => (
+                                                    <li key={item}>
+                                                        {item}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    )}
 
                                 </div>
-                                <ul>
-                                    <li>
-                                    Toy Story
-                                    </li>
-                                    <li>
-                                        
-                                        Wiedźmin
-                                    </li>
-                                </ul>
-
                             </div>
                         </div>
                     </div>
-                    <div style={{marginTop:"1vh"}}>
-                    <button className={styles.addButton} onClick={() => handleChangePwd()}>Zmień hasło</button>
-                    {isShownChangePwd &&
-                        <div>
-                            <ChangePassword></ChangePassword>
-                        </div>
+                    <div style={{ marginTop: "1vh" }}>
+                        <button className={styles.addButton} onClick={() => handleChangePwd()}>Zmień hasło</button>
+                        {isShownChangePwd &&
+                            <div>
+                                <ChangePassword></ChangePassword>
+                            </div>
 
-                    }
+                        }
 
-                    {check === true &&
-                        <>
-                            <button className={styles.addButton} onClick={() => handleDelete()}>Zbanuj Użytkownika</button>
-                            {isShownDelete &&
-                                <div>
-                                    <DeleteUser ></DeleteUser>
-                                </div>
-                            }
-                            <button className={styles.addButton} onClick={() => handleAddComp()}>Dodaj Firme</button>
-                            {isShownAddComp &&
-                                <div>
-                                    <AddCompany></AddCompany>
-                                </div>
-                            }
-                            <button className={styles.addButton} onClick={() => handleAddCat()}>Dodaj Kategorię</button>
-                            {isShownAddCat &&
-                                <div>
-                                    <AddCategory></AddCategory>
-                                </div>
-                            }
-                            <button className={styles.addButton} onClick={() => handleEditUser()}>Edytuj Użytkownika</button>
-                            {isShownEditUser &&
-                                <div>
-                                    <EditUser />
-                                </div>
-                            }
-                        </>
-                    }
-                </div>
+                        {check === true &&
+                            <>
+                                <button className={styles.addButton} onClick={() => handleDelete()}>Zbanuj Użytkownika</button>
+                                {isShownDelete &&
+                                    <div>
+                                        <DeleteUser ></DeleteUser>
+                                    </div>
+                                }
+                                <button className={styles.addButton} onClick={() => handleAddComp()}>Dodaj Firme</button>
+                                {isShownAddComp &&
+                                    <div>
+                                        <AddCompany></AddCompany>
+                                    </div>
+                                }
+                                <button className={styles.addButton} onClick={() => handleAddCat()}>Dodaj Kategorię</button>
+                                {isShownAddCat &&
+                                    <div>
+                                        <AddCategory></AddCategory>
+                                    </div>
+                                }
+                                <button className={styles.addButton} onClick={() => handleEditUser()}>Edytuj Użytkownika</button>
+                                {isShownEditUser &&
+                                    <div>
+                                        <EditUser />
+                                    </div>
+                                }
+                            </>
+                        }
+                    </div>
                 </div>
             </div>
 

@@ -46,7 +46,6 @@ const ActorItem = (props) => {
           {isShown1 &&
             <div>
               <ChangeActor />
-              
             </div>
           }
         </div>

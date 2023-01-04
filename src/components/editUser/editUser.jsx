@@ -1,7 +1,25 @@
-import React from 'react';
+import React, { Component, useState, useEffect } from 'react'
 import styles from './editUser.module.css'
-class EditUser extends React.Component{
-    render(){
+import axios from 'axios'
+function EditUser (){
+    const [Nazwa, setNazwa] = useState("");
+    const [Companies, setCompanies] = useState()
+    const [added, setAdded] = useState(false);
+
+    useEffect(() => {
+        const configuration = {
+            method: "get",
+            url: `http://localhost:8080/routes/Uzytkownik`,
+        };
+
+        axios(configuration).then((res) => {
+            var kategorie = ''
+            for(var i = 0; i < res.data.length; i++) {
+                kategorie = kategorie + ' ' + res.data[i].Login
+            }
+            setCompanies(kategorie)
+        });
+    }, [])
         return(
             <div className = {styles.cont}>
             <div className={styles.form_container}>
@@ -31,6 +49,13 @@ class EditUser extends React.Component{
                     <label for="title" class="form-label" >Zdjęcie</label>
                     <input type="text" class="form-control" name="Tytuł"/>
                 </div>
+                <p>Lista Użytkowników</p>
+                    <p style={{ fontSize: "12px" }}>{Companies}</p>
+                    {added ? (
+                        <p className="text-success">Usunięto użytkownika</p>
+                    ) : (
+                        <></>
+                    )}
                 <div>
                 <button className={styles.Button2}>Zmień</button>
                 </div>
@@ -39,7 +64,7 @@ class EditUser extends React.Component{
             </div>
         )
         
-    }
+    
 
 }
 export default EditUser;
