@@ -5,6 +5,9 @@ import axios from 'axios'
 function MatchCategoryFilm() {
     const [Nazwa, setName] = useState("");
     const [Categories, setCategories] = useState()
+
+    const [added, setAdded] = useState(false);
+    const [error, setError] = useState("");
     var filmInfo = JSON.parse(localStorage.getItem('filmTitle'));
     var Film_Id = filmInfo.Id;
 
@@ -16,11 +19,13 @@ function MatchCategoryFilm() {
 
         axios(configuration).then((res) => {
             var kategorie = ''
-            for(var i = 0; i < res.data.length; i++) {
+            for (var i = 0; i < res.data.length; i++) {
                 kategorie = kategorie + ' ' + res.data[i].Nazwa
             }
             setCategories(kategorie)
-        });
+        }).catch(function (error) {
+            setError(error.response.data.message);
+        });;
     }, [])
 
     const handleSubmit = (e) => {
@@ -38,7 +43,7 @@ function MatchCategoryFilm() {
             .then(function (response) {
                 console.log("response")
                 console.log(response);
-                var Kategoria_Id =  response.data.Kategoria_Id
+                var Kategoria_Id = response.data.Kategoria_Id
                 console.log("Resp data " + response.data.Kategoria_Id)
                 var configuration2 = {
                     method: "post",
@@ -46,38 +51,36 @@ function MatchCategoryFilm() {
                     data: {
                         Kategoria_Id,
                         Film_Id
-                        
+
                     },
                 };
                 console.log(configuration2);
                 axios(configuration2)
                     .then(() => {
                     })
-                    .catch((error) => {
-                        console.log("Errorr2")
-                        console.log(error)
-                        error = new Error();
-
+                    .catch(function (error) {
+                        setError(error.response.data.message);
                     });
             })
-            .catch((error) => {
-                console.log("error");
-                console.log(error);
-                error = new Error();
-
+            .catch(function (error) {
+                setError(error.response.data.message);
             });
     }
     return (
-        <div className = {styles.cont}>
+        <div className={styles.cont}>
             <div className={styles.form_container}>
                 <h2>Przypisz kategorię do filmu</h2>
                 <form onSubmit={(e) => handleSubmit(e)}>
-                    <div class="mb-3">
+                    <div class="mb-3">  
                         <label for="title" class="form-label"  >Nazwa Kategorii</label>
                         <input type="text" class="form-control" name="Kategoria_Id" onChange={(e) => setName(e.target.value)} />
                     </div>
                     <p>Dostępne kategorie</p>
-                    <p style={{fontSize: "12px"}}>{Categories}</p>   
+                    <p style={{ fontSize: "12px" }}>{Categories}</p>
+                    {added &&
+                        <p>Pomyślnie dodano kategorię do filmu</p>}
+                    {error !== "" &&
+                        <p style={{ color: "#F48FB1" }}>{error}</p>}
                     <div>
                         <button className={styles.Button2} onSubmit={(e) => handleSubmit(e)}>Dodaj</button>
                     </div>

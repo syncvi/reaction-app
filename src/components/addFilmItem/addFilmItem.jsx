@@ -30,7 +30,7 @@ export default function AddFilmItem() {
         };
         axios(configuration)
             .then(() => {
-                setAdded(true)
+                window.location.reload(false);
                 
             })
             .catch((error) => {
@@ -49,7 +49,7 @@ export default function AddFilmItem() {
                     </div>
                     <div class="mb-3">
                         <label for="title" class="form-label">Data Wydania</label>
-                        <input type="RRRR-MM-DD" class="form-control" name="DataWydania" onChange={(e) => setReleaseDate(e.target.value)} />
+                        <input type="RRRR-MM-DD" class="form-control" placeholder="RRRR-MM-DD" name="DataWydania" onChange={(e) => setReleaseDate(e.target.value)} />
                     </div>
                     <div class="mb-3">
                         <label for="title" class="form-label">Język</label>
@@ -57,7 +57,7 @@ export default function AddFilmItem() {
                     </div>
                     <div class="mb-3">
                         <label for="title" class="form-label">Długość</label>
-                        <input type="number" class="form-control" name="Długość" onChange={(e) => setLength(e.target.value)} />
+                        <input type="number" class="form-control" placeholder="Minuty"name="Długość" onChange={(e) => setLength(e.target.value)} />
                     </div>
                     <div class="mb-3">
                         <label for="title" class="form-label">Opis</label>
