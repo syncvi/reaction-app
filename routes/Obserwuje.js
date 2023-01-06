@@ -23,7 +23,7 @@ route.post('/', (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the Tutorial."
+                    err.message || "Some error occurred while creating follow."
             });
         });
 })
@@ -37,7 +37,7 @@ route.get("/", (req, res) => {
             res.status(500).send({
                 message:
                     err.message ||
-                    "Some error occurred while retrieving tutorials.",
+                    "Some error occurred while retrieving follows.",
             });
         });
 })
@@ -49,6 +49,13 @@ route.get("/findObserved/:login", (req, res) => {
         .then((data) => {
             res.send(JSON.stringify(data, null, 2))
         })
+        .catch((err) => {
+            res.status(500).send({
+                message:
+                    err.message ||
+                    "Some error occurred while retrieving follows for a specific movie.",
+            });
+        });
 })
 
 exports = module.exports = route

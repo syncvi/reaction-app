@@ -6,6 +6,8 @@ function MatchActorFilm() {
     const [Imię, setName] = useState("");
     const [Nazwisko, setSurname] = useState("");
     const [Stanowisko, setJob] = useState("");
+    const [error, setError] = useState("");
+    const [added, setAdded] = useState(false);
     var filmInfo = JSON.parse(localStorage.getItem('filmTitle'));
     var Film_Id = filmInfo.Id;
     console.log(Film_Id)
@@ -25,10 +27,8 @@ function MatchActorFilm() {
                 console.log(response.data.Osoba_Id);
                 localStorage.setItem('Osoba_Id', JSON.stringify(response.data.Osoba_Id))
             })
-            .catch((error) => {
-                console.log(error);
-                error = new Error();
-
+            .catch(function (error)  {
+                setError(error.response.data.message);
             });
 
     }
@@ -65,10 +65,10 @@ function MatchActorFilm() {
 
         axios(configuration)
             .then(() => {
+                setAdded(true)
             })
-            .catch((error) => {
-                error = new Error();
-
+            .catch(function (error)  {
+                setError(error.response.data.message);
             });
 
 
@@ -90,6 +90,10 @@ function MatchActorFilm() {
                         <label class="form-label">Rola lub Stanowisko Osoby</label>
                         <input type="text" class="form-control" name="Stanowisko" onChange={(e) => setJob(e.target.value)} />
                     </div>
+                    {added && 
+                    <p>Pomyślnie dodano osobę do filmu</p>}
+                    {error !== "" &&
+                    <p style={{color:"#F48FB1"}}>{error}</p>}
                     <div>
                         <button className={styles.Button2} onClick={() => (setType('Aktor'))} onSubmit={(e) => handleSubmit(e)}>Dodaj jako aktora</button>
                         <button className={styles.Button2} onClick={() => (setType('Pracownik'))} onSubmit={(e) => handleSubmit(e)}>Dodaj jako pracownika</button>

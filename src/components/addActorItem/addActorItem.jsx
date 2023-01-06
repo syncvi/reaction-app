@@ -28,7 +28,7 @@ function AddActorItem (){
         };
         axios(configuration)
             .then(() => {
-                setAdded(true)
+                window.location.reload(false);
             })
             .catch((error) => {
                 error = new Error();
@@ -50,7 +50,7 @@ function AddActorItem (){
                 </div>
                 <div class="mb-3">
                     <label for="title" class="form-label">Data Urodzenia</label>
-                    <input type="RRRR-MM-DD" class="form-control" name="Data_urodzenia" onChange={(e) => setDate(e.target.value)}/>
+                    <input type="RRRR-MM-DD" class="form-control" placeholder="RRRR-MM-DD" name="Data_urodzenia" onChange={(e) => setDate(e.target.value)}/>
                 </div>
                 <div class="mb-3">
                     <label for="title" class="form-label">Kraj Pochodzenia</label>
@@ -61,7 +61,7 @@ function AddActorItem (){
                     <input type="text" class="form-control" name="Zdjecie" onChange={(e) => setImage(e.target.value)}/>
                 </div>
                 {added ? (
-                    <p className="text-success">Person added succesfully</p>
+                    <p>Person added succesfully</p>
                 ) : (
                     <></>
                 )}

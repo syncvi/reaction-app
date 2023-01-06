@@ -11,7 +11,7 @@ route.get("/", (req, res) => {
             res.status(500).send({
                 message:
                     err.message ||
-                    "Some error occurred while retrieving tutorials.",
+                    "Some error occurred while retrieving producents.",
             });
         });
 });
@@ -28,7 +28,7 @@ route.post('/findId', (req, res) => {
       .catch(err => {
           res.status(500).send({
               message:
-                  err.message || "Some error occurred while retrieving tutorials."
+                  err.message || "Some error occurred while retrieving producent."
           });
       });
 }) 
@@ -42,13 +42,13 @@ route.get("/:id", (req, res) => {
                 res.send(data);
             } else {
                 res.status(404).send({
-                    message: `Cannot find Tutorial with id=${id}.`,
+                    message: `Cannot find producent with id=${id}.`,
                 });
             }
         })
         .catch((err) => {
             res.status(500).send({
-                message: "Error retrieving Tutorial with id=" + id,
+                message: "Error retrieving producent with id=" + id,
             });
         });
 });
@@ -66,7 +66,7 @@ route.post("/", (req, res) => {
             res.status(500).send({
                 message:
                     err.message ||
-                    "Some error occurred while creating the Tutorial.",
+                    "Some error occurred while creating producent.",
             });
         });
 });

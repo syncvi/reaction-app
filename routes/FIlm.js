@@ -21,7 +21,7 @@ route.get("/", (req, res) => {
             res.status(500).send({
                 message:
                     err.message ||
-                    "Some error occurred while retrieving tutorials.",
+                    "Some error occurred while retrieving movies.",
             });
         });
 });
@@ -35,13 +35,13 @@ route.get("/:id", (req, res) => {
                 res.send(data);
             } else {
                 res.status(404).send({
-                    message: `Cannot find Tutorial with id=${id}.`,
+                    message: `Cannot find movie with id=${id}.`,
                 });
             }
         })
         .catch((err) => {
             res.status(500).send({
-                message: "Error retrieving Tutorial with id=" + id,
+                message: "Error retrieving movie with id=" + id,
             });
         });
 });
@@ -63,7 +63,7 @@ route.post("/update", (req, res) => {
             res.status(500).send({
                 message:
                     err.message ||
-                    "Some error occurred while creating the Tutorial.",
+                    "Some error occurred while updating movie.",
             });
         });
 });
@@ -79,7 +79,7 @@ route.post("/delete", (req, res) => {
             res.status(500).send({
                 message:
                     err.message ||
-                    "Some error occurred while creating the Tutorial.",
+                    "Some error occurred while deleting movie.",
             });
         });
 });
@@ -126,7 +126,7 @@ route.post("/", (req, res) => {
             res.status(500).send({
                 message:
                     err.message ||
-                    "Some error occurred while creating the Tutorial.",
+                    "Some error occurred while creating movie.",
             });
         });
 });
@@ -138,6 +138,13 @@ route.get("/findActors/:id", (req, res) => {
         .then((data) => {
             res.send(JSON.stringify(data, null, 2))
         })
+        .catch((err) => {
+            res.status(500).send({
+                message:
+                    err.message ||
+                    "Some error occurred while finding actors.",
+            });
+        });
 })
 
 route.get("/findCategories/:id", (req, res) => {
@@ -147,6 +154,13 @@ route.get("/findCategories/:id", (req, res) => {
         .then((data) => {
             res.send(JSON.stringify(data, null, 2))
         })
+        .catch((err) => {
+            res.status(500).send({
+                message:
+                    err.message ||
+                    "Some error occurred while finding categories.",
+            });
+        });
 })
 
 route.get("/findCompanies/:id", (req, res) => {
@@ -156,6 +170,13 @@ route.get("/findCompanies/:id", (req, res) => {
         .then((data) => {
             res.send(JSON.stringify(data, null, 2))
         })
+        .catch((err) => {
+            res.status(500).send({
+                message:
+                    err.message ||
+                    "Some error occurred while finding producents.",
+            });
+        });
 })
 
 exports = module.exports = route;

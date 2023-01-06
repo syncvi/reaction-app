@@ -12,7 +12,7 @@ route.get('/', (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while retrieving tutorials."
+                    err.message || "Some error occurred while retrieving users."
             });
         });
 })
@@ -26,40 +26,32 @@ route.get('/:id', (req, res) => {
                 res.send(data);
             } else {
                 res.status(404).send({
-                    message: `Cannot find Tutorial with id=${id}.`
+                    message: `Cannot find user with id=${id}.`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error retrieving Tutorial with id=" + id
+                message: "Error retrieving user with id=" + id
             });
         });
 })
 
-route.delete('/', (req, res) => {
-    const id = req.body.Login;
-
+route.post("/delete", (req, res) => {
+    console.log(req.body);
     Użytkownik.destroy({
-        where: { Login: id }
-    })
-        .then(num => {
-            if (num == 1) {
-                res.send({
-                    message: "Movie was deleted successfully!"
-                });
-            } else {
-                res.send({
-                    message: `Cannot delete Movie with id=${id}. Maybe Movie was not found!`
-                });
-            }
+    where: {Login: req.body.Login},cascade:true})
+        .then((data) => {
+            res.send("Super");
         })
-        .catch(err => {
+        .catch((err) => {
             res.status(500).send({
-                message: "Could not delete Movie with id=" + id
+                message:
+                    err.message ||
+                    "Some error occurred while deleting user.",
             });
         });
-})
+});
 
 route.post("/user/updatePassword", (request, response) => {
     // hash the password
@@ -75,14 +67,14 @@ route.post("/user/updatePassword", (request, response) => {
                 // return success if the new user is added to the database successfully
                 .then((result) => {
                     response.status(201).send({
-                        message: "User Created Successfully",
+                        message: "Password updated successfully",
                         result,
                     });
                 })
                 // catch erroe if the new user wasn't added successfully to the database
                 .catch((error) => {
                     response.status(500).send({
-                        message: "Error creating user",
+                        message: "Error updating password",
                         error,
                     });
                 });
@@ -210,35 +202,10 @@ route.post("/user/login", (request, response) => {
         // catch error if email does not exist
         .catch((e) => {
             response.status(404).send({
-                message: "Email not found",
+                message: "Login not found",
                 e,
             });
         });
-
-    // if the passwords match
-    // if (pwdcheck) {
-    //     //   create JWT token
-    //     const token = jwt.sign(
-    //         {
-    //             userId: user.Login,
-    //             userEmail: user.EMail,
-    //         },
-    //         "RANDOM-TOKEN",
-    //         { expiresIn: "24h" }
-    //     );
-
-    //     //   return success response
-    //     response.status(200).send({
-    //         message: "Login Successful",
-    //         email: user.EMail,
-    //         token,
-    //     });
-    // }
-    // else {
-    //     return response.status(401).send({
-    //         message: "Passwords does not match",
-    //     });
-    // }
 })
 
 route.post("/update", (req, res) => {
@@ -254,37 +221,15 @@ route.post("/update", (req, res) => {
           });
         } else {
           res.send({
-            message: `Cannot update Tutorial with id=${Login}. Maybe Tutorial was not found or req.body is empty!`
+            message: `Cannot update user with Login=${Login}.`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error updating Tutorial with id=" + Login
+          message: "Error updating user with id=" + Login
         });
       });
-})
-
-
-route.post('/', (req, res) => {
-    console.log(req.body)
-    Użytkownik.create({
-        Login: req.body.Login,
-        EMail: req.body.EMail,
-        Hasło: req.body.Hasło,
-        StatusPremium: req.body.StatusPremium,
-        TypKonta: req.body.TypKonta,
-        Zdjęcie: req.body.Zdjęcie
-    })
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred while creating the Tutorial."
-            });
-        });
 })
 
 exports = module.exports = route

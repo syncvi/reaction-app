@@ -16,7 +16,7 @@ route.post('/', (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the Tutorial."
+                    err.message || "Some error occurred while creating comment."
             });
         });
 })
@@ -34,7 +34,7 @@ route.get('/findComments/:id', (req, res) => {
             res.status(500).send({
                 message:
                     err.message ||
-                    "Some error occurred while retrieving tutorials.",
+                    "Some error occurred while retrieving comment.",
             });
         });
 })
@@ -48,7 +48,7 @@ route.get("/", (req, res) => {
             res.status(500).send({
                 message:
                     err.message ||
-                    "Some error occurred while retrieving tutorials.",
+                    "Some error occurred while retrieving comments.",
             });
         });
 })

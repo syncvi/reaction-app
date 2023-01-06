@@ -11,7 +11,7 @@ route.get('/', (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while retrieving tutorials."
+                    err.message || "Some error occurred while retrieving people."
             });
         });
 })
@@ -30,7 +30,7 @@ route.post('/', (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the Tutorial."
+                    err.message || "Some error occurred while creating person."
             });
         });
 })
@@ -46,7 +46,7 @@ route.post("/delete", (req, res) => {
             res.status(500).send({
                 message:
                     err.message ||
-                    "Some error occurred while creating the Tutorial.",
+                    "Some error occurred while deleting person.",
             });
         });
 });
@@ -68,7 +68,7 @@ route.post("/update", (req, res) => {
             res.status(500).send({
                 message:
                     err.message ||
-                    "Some error occurred while creating the Tutorial.",
+                    "Some error occurred while updating person.",
             });
         });
 });
@@ -86,13 +86,8 @@ route.post('/findId', (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while retrieving tutorials."
+                    err.message || "Some error occurred while retrieving person."
             });
         });
 })
-
-
-
-
-
 exports = module.exports = route

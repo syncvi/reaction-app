@@ -35,11 +35,11 @@ function ChangePassword() {
                 <form onSubmit={(e) => handleSubmit(e)}>
                     <div class="mb-3">
                         <label for="title" class="form-label">Nowe Hasło</label>
-                        <input type="text" class="form-control" onChange={(e) => setHasło(e.target.value)} />
+                        <input type="password" class="form-control" onChange={(e) => setHasło(e.target.value)} />
                     </div>
                     <div class="mb-3">
                         <label for="title" class="form-label">Potwierdź Hasło</label>
-                        <input type="text" class="form-control" onChange={(e) => setPotwierdźHasło(e.target.value)} />
+                        <input type="password" class="form-control" onChange={(e) => setPotwierdźHasło(e.target.value)} />
                     </div>
                     {Hasło === PotwierdźHasło && (Hasło !== "") ?
                         <div>

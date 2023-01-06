@@ -54,14 +54,14 @@ var models = initModels(sequelize)
 
 
 
-models.Obserwuje.findAll({ where: { Login: "admin" }, include: { model: models.Film, as: 'Film' } })
-.then((res) => {
-     var test = JSON.stringify(res,null,2)
-    console.log(res[0].Film["Tytuł"]);
-    // console.log(res.Osoba_Id_Osobas.length)
+// models.Obserwuje.findAll({ where: { Login: "admin" }, include: { model: models.Film, as: 'Film' } })
+// .then((res) => {
+//      var test = JSON.stringify(res,null,2)
+//     console.log(res[0].Film["Tytuł"]);
+//     console.log(res.Osoba_Id_Osobas.length)
 //   console.log(res.Osoba_Id_Osobas[0].Imię)
 //   console.log(res.Osoba_Id_Osobas[0].Nazwisko)
-})
+// })
 
 // models.Film.findOne({where: {Film_Id: 1}, include: {model: models.Osoba, as: 'Osoba_Id_Osobas'}})
 // .then (res => {

@@ -10,7 +10,7 @@ route.get('/', (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while retrieving tutorials."
+                    err.message || "Some error occurred while retrieving connections between movie and actors."
             });
         });
 })
@@ -28,7 +28,7 @@ route.post('/', (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the Tutorial."
+                    err.message || "Some error occurred while creating connections between movie and actors."
             });
         });
 })

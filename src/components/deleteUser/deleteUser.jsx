@@ -23,26 +23,43 @@ function DeleteUser() {
         });
     }, [])
 
+    const handleSubmit = (e) => {
+        // prevent the form from refreshing the whole page
+        e.preventDefault();
+        // set configurations
+        const configuration = {
+            method: "post",
+            url: "http://localhost:8080/routes/Uzytkownik/delete",
+            data: {
+                Login : Nazwa
+            },
+        };
+        axios(configuration)
+            .then(() => {
+                window.location.reload(false);
+            })
+            .catch((error) => {
+                error = new Error();
+
+            });
+    }
+
     return (
         <div className={styles.cont}>
             <div className={styles.form_container}>
                 <h2>Podaj usuwanego użytkownika</h2>
-                <from>
+                <form onSubmit={(e) => handleSubmit(e)}>
                     <div class="mb-3">
                         <label for="title" class="form-label">Login użytkownika</label>
                         <input type="login" class="form-control" name="Login" onChange={(e) => setNazwa(e.target.value)} />
                     </div>
                     <p>Lista Użytkowników</p>
                     <p style={{ fontSize: "12px" }}>{Companies}</p>
-                    {added ? (
-                        <p className="text-success">Usunięto użytkownika</p>
-                    ) : (
-                        <></>
-                    )}
+                
                     <div>
-                        <button className={styles.Button2}>Usuń</button>
+                        <button className={styles.Button2} onClick={(e) => handleSubmit(e)} >Usuń</button>
                     </div>
-                </from>
+                </form>
             </div>
         </div>
     )

@@ -10,6 +10,7 @@ export default function Login() {
     const [Hasło, setPassword] = useState("");
     const [Login, setLogin] = useState("");
     const [login, setLogged] = useState(false);
+    const [error, setError] = useState("");
 
     const getUserInfo = () => {
         axios
@@ -42,21 +43,14 @@ export default function Login() {
         };
         axios(configuration)
             .then((result) => {
-                // set the cookie
-                cookies.set("TOKEN", result.data.token, {
-                    path: "/",
-                });
-                // redirect user to the auth page
-
                 getUserInfo()
                 setLogged(true);
                 // console.log(configuration);
                 setTimeout(() => { window.location.href = "/profile" }, 1500);
 
             })
-            .catch((error) => {
-                error = new Error();
-                console.log(configuration);
+            .catch(function (error)  {
+                setError(error.response.data.message);
             });
     }
 
@@ -79,6 +73,8 @@ export default function Login() {
                     <div class="mb-3">
                         <button className={styles.Button2} onSubmit={(e) => handleSubmit(e)}>Zaloguj</button>
                     </div>
+                    {error !== "" &&
+                    <p style={{color:"#F48FB1"}}>{error}</p>}
                     
                 </form>
                 <div>

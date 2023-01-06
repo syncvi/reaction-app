@@ -11,6 +11,7 @@ export default function Register() {
     const [Login, setLogin] = useState("");
     const [Zdjęcie, setImage] = useState("");
     const [register, setRegister] = useState(false);
+    const [error, setError] = useState("");
 
     const handleSubmit = (e) => {
         // prevent the form from refreshing the whole page
@@ -34,9 +35,8 @@ export default function Register() {
                 setRegister(true);
 
             })
-            .catch((error) => {
-                error = new Error();
-
+            .catch(function (error)  {
+                setError(error.response.data.message);
             });
     };
     return (
@@ -75,7 +75,8 @@ export default function Register() {
                         <p></p>
                     )}
 
-
+{error !== "" &&
+                    <p style={{color:"#F48FB1"}}>{error}</p>}
                         </div>
                         <div>
                             <label for="btnSuccess" class="form-label">Masz już konto?</label>
