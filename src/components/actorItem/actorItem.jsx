@@ -45,7 +45,13 @@ const ActorItem = (props) => {
           <button className={styles.filmItem} onClick={() => handleAdd1()}>Edytuj Osobę</button>
           {isShown1 &&
             <div>
-              <ChangeActor />
+              <ChangeActor  
+              Id={props.Id}
+               Name={props.Name}
+               Surname={props.Surname}
+               Birthday={props.Birthday}
+               Country={props.Country}
+               Picture={props.Picture} />
             </div>
           }
         </div>
@@ -54,8 +60,9 @@ const ActorItem = (props) => {
         <div>
           <button className={styles.filmItem} onClick={() => handleAdd2()}>Usuń Osobę</button>
           {isShown2 &&
-            <div>
-              <DeleteActor />
+            <div >
+              <DeleteActor 
+              Id={props.Id}/>
             </div>
           }
         </div>

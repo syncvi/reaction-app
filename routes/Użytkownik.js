@@ -61,6 +61,70 @@ route.delete('/', (req, res) => {
         });
 })
 
+route.post("/user/updatePassword", (request, response) => {
+    // hash the password
+    psw = request.body.Hasło
+    bcrypt
+        .hash(psw, 10, function(err, hashedPassword)
+        {
+            Użytkownik
+                .update({
+                    Hasło: hashedPassword},
+                    { where: {Login: request.body.Login}}
+                )
+                // return success if the new user is added to the database successfully
+                .then((result) => {
+                    response.status(201).send({
+                        message: "User Created Successfully",
+                        result,
+                    });
+                })
+                // catch erroe if the new user wasn't added successfully to the database
+                .catch((error) => {
+                    response.status(500).send({
+                        message: "Error creating user",
+                        error,
+                    });
+                });
+        }
+        
+)});
+
+route.post("/user/update", (request, response) => {
+    // hash the password
+    psw = request.body.Hasło
+    bcrypt
+        .hash(psw, 10, function(err, hashedPassword)
+        {
+            Użytkownik
+                .update({
+                    Login: request.body.Login,
+                    EMail: request.body.EMail,
+                    Hasło: hashedPassword,
+                    StatusPremium: request.body.StatusPremium,
+                    TypKonta: request.body.TypKonta,
+                    Zdjęcie: request.body.Zdjęcie}
+                    ,{ where: {Login: request.body.Login}}
+                )
+                // return success if the new user is added to the database successfully
+                .then((result) => {
+                    response.status(201).send({
+                        message: "User Created Successfully",
+                        result,
+                    });
+                })
+                // catch erroe if the new user wasn't added successfully to the database
+                .catch((error) => {
+                    response.status(500).send({
+                        message: "Error creating user",
+                        error,
+                    });
+                });
+        }
+        
+)});
+
+
 route.post("/user/register", (request, response) => {
     // hash the password
     psw = request.body.Hasło

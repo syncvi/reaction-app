@@ -83,6 +83,8 @@ const DetailsFilm = () => {
     const handleAdd6 = () => {
         setIsShown6(current => !current);
     }
+    console.log("props")
+    console.log(props)
 
     return (
         <div class="main1" style={{ marginTop: "2vh" }}>
@@ -159,7 +161,8 @@ const DetailsFilm = () => {
                         <button className={styles.addButton} onClick={() => handleAdd3()}>Usuń film</button>
                         {isShown3 &&
                             <div>
-                                <DeleteFilm ></DeleteFilm>
+                                <DeleteFilm
+                                Id={props.Id} ></DeleteFilm>
                             </div>
                         }
                     </div>

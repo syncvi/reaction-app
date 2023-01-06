@@ -36,6 +36,7 @@ class ActorList extends Component {
                         {this.state.films.map((data) => (
                             <div>
                                 <ActorItem
+                                    Id={data.Osoba_Id}
                                     Name={data.Imię}
                                     Surname={data.Nazwisko}
                                     Birthday={data.Data_Urodzenia}
@@ -51,6 +52,7 @@ class ActorList extends Component {
                             <div>
                                 {(data.Imię.includes(this.state.term)) &&
                                     <ActorItem
+                                        Id={data.Osoba_Id}
                                         Name={data.Imię}
                                         Surname={data.Nazwisko}
                                         Birthday={data.Data_Urodzenia}

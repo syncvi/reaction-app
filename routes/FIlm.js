@@ -46,6 +46,45 @@ route.get("/:id", (req, res) => {
         });
 });
 
+route.post("/update", (req, res) => {
+    console.log(req.body);
+    Film.update({
+        Tytuł: req.body.Tytuł,
+        Data_Wydania: req.body.Data_Wydania,
+        Długość: req.body.Długość,
+        Opis: req.body.Opis,
+        Zdjęcie: req.body.Zdjęcie,
+        Język: req.body.Język,
+    }, {where: {Film_Id: req.body.Film_Id}})
+        .then((data) => {
+            res.send(data);
+        })
+        .catch((err) => {
+            res.status(500).send({
+                message:
+                    err.message ||
+                    "Some error occurred while creating the Tutorial.",
+            });
+        });
+});
+
+route.post("/delete", (req, res) => {
+    console.log(req.body);
+    Film.destroy({
+    where: {Film_Id: req.body.Film_Id},cascade:true})
+        .then((data) => {
+            res.send("Super");
+        })
+        .catch((err) => {
+            res.status(500).send({
+                message:
+                    err.message ||
+                    "Some error occurred while creating the Tutorial.",
+            });
+        });
+});
+
+
 route.delete("/", (req, res) => {
     const id = req.body.Film_Id;
 

@@ -34,6 +34,45 @@ route.post('/', (req, res) => {
             });
         });
 })
+
+route.post("/delete", (req, res) => {
+    console.log(req.body);
+    Osoba.destroy({
+    where: {Osoba_Id: req.body.Osoba_Id},cascade:true})
+        .then((data) => {
+            res.send("poszło");
+        })
+        .catch((err) => {
+            res.status(500).send({
+                message:
+                    err.message ||
+                    "Some error occurred while creating the Tutorial.",
+            });
+        });
+});
+
+
+route.post("/update", (req, res) => {
+    console.log(req.body);
+    Osoba.update({
+        Imię: req.body.Imię,
+        Nazwisko: req.body.Nazwisko,
+        Data_Urodzenia: req.body.Data_Urodzenia,
+        Kraj_Pochodzenia: req.body.Kraj_Pochodzenia,
+        Zdjęcie: req.body.Zdjęcie,
+    }, {where: {Osoba_Id: req.body.Osoba_Id}})
+        .then((data) => {
+            res.send(data);
+        })
+        .catch((err) => {
+            res.status(500).send({
+                message:
+                    err.message ||
+                    "Some error occurred while creating the Tutorial.",
+            });
+        });
+});
+
 route.post('/findId', (req, res) => {
     Osoba.findOne({
         where: {
